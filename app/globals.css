@@ -4,6 +4,8 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 @layer utilities {
@@ -74,5 +76,24 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .container {
+      @apply mx-auto px-4;
+
+      @media (min-width: 1440px) {
+          max-width: 1440px;
+      }
+
+      @media (max-width: 1440px) and (min-width: 1024px) {
+          max-width: 1024px;
+      }
+      
+      @media (max-width: 1024px) {
+          max-width: 100%;
+          padding: 0 1rem;
+      }
   }
 }
