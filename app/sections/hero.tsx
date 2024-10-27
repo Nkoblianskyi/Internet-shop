@@ -17,17 +17,17 @@ export const Hero: React.FC<Props> = ({ }) => {
                     Elevate your space with NJY Design.
                 </p>
                 <div className="hero-left-button">
-                    <Button className="hero-left-button-item">
+                    <Button className="hero-left-button-item btn">
                         Shop Now
                     </Button>
-                    <Button className="hero-left-button-item">
+                    <Button className="hero-left-button-item btn">
                         Learn More
                     </Button>
                 </div>
             </div>
             <div className="hero-right">
                 <Image 
-                src='/product-gallery.jpg' 
+                src='/hero.jpg' 
                 alt='product-gallery' 
                 width={1420} 
                 height={620}

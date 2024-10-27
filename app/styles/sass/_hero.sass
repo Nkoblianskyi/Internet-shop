@@ -3,12 +3,15 @@
   grid-template-columns: 1fr 1fr
   align-items: center
   justify-items: center
-  max-height: 620px
+  height: 680px
   padding: 20px
   width: 100%
+  max-width: 1400px
   gap: 10px
   position: relative
   margin-top: 10px
+  margin-bottom: 10px
+
 
   // Ліва частина
   &-left
@@ -36,23 +39,9 @@
       display: flex
       gap: 15px
 
-      &-item
-        padding: 10px 20px
-        font-size: 1rem
-        font-weight: bold
-        background-color: #1E4C2F
-        color: #FFFFFF
-        border-radius: 5px
-        transition: background-color 0.3s
-
-        &:hover
-          background-color: #FFFFFF
-          color: #1E4C2F
-          border: 1px solid #1E4C2F
-
   &-right
     width: 100%
-    max-height: 620px
+    height: 680px
     position: absolute
     top: 0
     z-index: 1
@@ -60,9 +49,8 @@
     &-image
       width: 100%
       height: 100%
-      max-height: 620px
+      max-height: 680px
       object-fit: cover
-
 
   @media (max-width: 1440px)
 
