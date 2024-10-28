@@ -33,11 +33,21 @@
             border-radius: 10px
             height: 140px
             width: 120px
+            transition: background-color 0.3s, transform 0.5s
+
+            &:hover
+                background-color: #1E4C2F
+                color: #FFFFFF
+                transform: scale(1.05)
+
+                .category-container-item-icon
+                    color: #FFFFFF
 
             &-icon
                 width: 52px
                 height: 52px
                 color: #1E4C2F
+                transition: background-color 0.3s
 
             &-text
                 font-family: Clash Grotesk
@@ -46,3 +56,4 @@
                 line-height: 28px
                 letter-spacing: -0.20000000298023224px
                 text-align: center
+                transition: color 0.3s
