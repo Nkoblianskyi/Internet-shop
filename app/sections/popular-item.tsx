@@ -1,5 +1,6 @@
 import React from 'react';
 import { CardProducts } from '../shop/products/[id]/card-products';
+import { Button } from '@/components/ui/button';
 
 interface Props {
     className?: string;
@@ -37,6 +38,7 @@ export const PopularItem: React.FC<Props> = ({ }) => {
                     <CardProducts />
                 </div>
             </div>
+            <Button className='btn'>Load More</Button>
         </div>
     );
 };

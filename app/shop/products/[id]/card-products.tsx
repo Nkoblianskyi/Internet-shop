@@ -11,6 +11,7 @@ interface Props {
 export const CardProducts: React.FC<Props> = ({ }) => {
 
     return (
+        <>
         <div className='card'>
             <div className='card-item'>
                 <Image
@@ -37,6 +38,8 @@ export const CardProducts: React.FC<Props> = ({ }) => {
                     <span className='reviews-star-rating-count'>528</span>
                 </div>
             </div>
+            
         </div>
+        </>
     );
 };
