@@ -5,6 +5,6 @@ const mockedCategories = [
   'Nursery',
   'Lounge',
   'Hallways',
-] as const;
+];
 
 export default mockedCategories;
