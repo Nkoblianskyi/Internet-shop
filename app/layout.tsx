@@ -3,6 +3,12 @@ import localFont from "next/font/local";
 import "./globals.css";
 import './styles/index.scss';
 import AppHeader from '@/components/AppHeader/AppHeader';
+import { Nunito } from 'next/font/google';
+
+const nunito = Nunito({
+  subsets: ['latin'], // Вказуємо підмножину для латинських символів
+  weight: ['400', '700', '200', '800', '900'], // Вибираємо ваги (400 = normal, 700 = bold)
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${nunito.className}`}
       >
         <AppHeader />
         {children}
