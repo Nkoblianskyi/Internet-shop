@@ -38,7 +38,7 @@ export const PopularItem: React.FC<Props> = ({ }) => {
                     <CardProducts />
                 </div>
             </div>
-            <Button className='btn'>Load More</Button>
+            <Button className='btn popular-button'>Load More</Button>
         </div>
     );
 };
