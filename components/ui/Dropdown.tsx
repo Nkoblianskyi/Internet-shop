@@ -22,7 +22,7 @@ const Dropdown = <T extends string>({ items, selectedItem, selectItem, placehold
 
   return (
     <DropdownMenu onOpenChange={(isOpen) => setIsActive(isOpen)}>
-      <DropdownMenuTrigger className="flex items-center px-4 gap-1 text-nowrap">
+      <DropdownMenuTrigger className="flex items-center px-4 gap-1 font-medium text-nowrap">
         {selectedItem || placeholder}
         <ChevronDown
           size={20}
@@ -38,7 +38,7 @@ const Dropdown = <T extends string>({ items, selectedItem, selectItem, placehold
             key={item}
             onSelect={() => selectItem(item)}
             className={twMerge(
-              'hover:bg-[#7B5E57] hover:text-[#fff]',
+              'font-medium hover:bg-[#7B5E57] hover:text-[#fff]',
               item === selectedItem ? 'bg-[#7B5E57] text-[#fff] ' : ''
             )}
           >
