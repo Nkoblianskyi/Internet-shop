@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import './styles/index.scss';
 import AppHeader from '@/components/AppHeader/AppHeader';
@@ -7,18 +6,7 @@ import { Nunito } from 'next/font/google';
 
 const nunito = Nunito({
   subsets: ['latin'], // Вказуємо підмножину для латинських символів
-  weight: ['400', '700', '200', '800', '900'], // Вибираємо ваги (400 = normal, 700 = bold)
-});
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+  weight: ['400', '500', '700', '200', '800', '900'], // Вибираємо ваги (400 = normal, 700 = bold)
 });
 
 export const metadata: Metadata = {
