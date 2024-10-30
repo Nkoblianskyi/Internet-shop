@@ -9,8 +9,7 @@
   max-width: 1400px
   gap: 10px
   position: relative
-  overflow: hidden // Додаємо, щоб уникнути прокрутки
-
+  overflow: hidden 
   // Ліва частина
   &-left
     display: flex
@@ -60,16 +59,14 @@
 
   @media (max-width: 768px)
     .hero
-      padding: 10px // Зменшено для кращої адаптації
-      max-width: 100% // Дозволяємо максимальну ширину 100%
-      height: auto // Дозволяємо висоті адаптуватися до контенту
-
+      padding: 10px
+      max-width: 100% 
+      height: auto 
       &-left
         max-width: 400px
         gap: 10px
         top: 60px
-        left: 60px // Зменшено для кращого адаптивного вигляду
-
+        left: 60px 
         &-title
           font-size: 34px
           font-weight: 600
