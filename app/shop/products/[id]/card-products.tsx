@@ -1,22 +1,27 @@
-'use client'
+'use client';
 
 import React from 'react';
 import Image from 'next/image';
 import { FaStar } from 'react-icons/fa';
 
-interface Props {
-    className?: string;
+interface ProductProps {
+    product: {
+        image: string;
+        title: string;
+        price: number;
+        description: string;
+        rating: number;
+        reviewCount: number;
+    };
 }
 
-export const CardProducts: React.FC<Props> = ({ }) => {
-
+export const CardProducts: React.FC<ProductProps> = ({ product }) => {
     return (
-        <>
         <div className='card'>
             <div className='card-item'>
                 <Image
-                    src='/product.jpg'
-                    alt='product'
+                    src={product.image}
+                    alt={product.title}
                     width={280}
                     height={280}
                     className='card-item-image'
@@ -24,22 +29,16 @@ export const CardProducts: React.FC<Props> = ({ }) => {
             </div>
             <div className='card-item-info'>
                 <div className='card-item-info-wrapp'>
-                    <h1 className='card-item-info-wrapp-title'>Commode</h1>
-                    <p className='card-item-info-wrapp-price'>$ 278</p>
+                    <h1 className='card-item-info-wrapp-title'>{product.title}</h1>
+                    <p className='card-item-info-wrapp-price'>${product.price}</p>
                 </div>
-                <p className='card-item-info-description'>Living room</p>
+                <p className='card-item-info-description'>{product.description}</p>
                 <div className='reviews'>
-                    <FaStar
-                        className='reviews-star'
-                        width={24}
-                        height={24}
-                    />
-                    <span className='reviews-star-rating'>4.8</span>
-                    <span className='reviews-star-rating-count'>528</span>
+                    <FaStar className='reviews-star' />
+                    <span className='reviews-star-rating'>{product.rating.toFixed(1)}</span>
+                    <span className='reviews-star-rating-count'>({product.reviewCount})</span>
                 </div>
             </div>
-            
         </div>
-        </>
     );
 };

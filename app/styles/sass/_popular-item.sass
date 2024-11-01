@@ -9,8 +9,6 @@
         font-size: 28px
         font-weight: 600
         line-height: 39.2px
-        letter-spacing: -0.20000000298023224px
-        text-align: center
 
     &-list
         display: grid
@@ -24,5 +22,11 @@
             justify-content: center
             gap: 25px
             margin-bottom: 32px
-.popular-button
-    margin-bottom: 80px
+
+@media (max-width: 584px)
+    .popular-list
+        grid-template-columns: repeat(3, 1fr)
+
+@media (max-width: 480px)
+    .popular-list
+        grid-template-columns: repeat(2, 1fr)
