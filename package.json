@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.2",
@@ -27,17 +28,21 @@
     "next": "14.2.16",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.53.1",
     "react-icons": "^5.3.0",
     "sass": "^1.80.4",
     "scss": "^0.2.4",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^1.1.0"
+    "validator": "^13.12.0",
+    "vaul": "^1.1.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/validator": "^13.12.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.16",
     "postcss": "^8",

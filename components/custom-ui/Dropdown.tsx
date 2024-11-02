@@ -37,10 +37,7 @@ const Dropdown = <T extends string>({ items, selectedItem, selectItem, placehold
           <DropdownMenuItem
             key={item}
             onSelect={() => selectItem(item)}
-            className={twMerge(
-              'font-medium hover:bg-[#7B5E57] hover:text-[#fff]',
-              item === selectedItem ? 'bg-[#7B5E57] text-[#fff] ' : ''
-            )}
+            isActive={item === selectedItem}
           >
             {item}
           </DropdownMenuItem>
