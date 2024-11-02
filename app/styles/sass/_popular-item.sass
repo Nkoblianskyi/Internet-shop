@@ -14,14 +14,21 @@
         display: grid
         grid-template-columns: repeat(4, 1fr)
         gap: 24px
+        width: 100%
 
-        &-item
-            display: flex
-            flex-direction: column
-            align-items: center
-            justify-content: center
-            gap: 25px
-            margin-bottom: 32px
+    &-list-item
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        gap: 25px
+        width: 100%
+
+.skeleton-item
+    width: 100%
+    height: 300px
+    border-radius: 8px
+    background-color: #e0e0e0
 
 @media (max-width: 584px)
     .popular-list
