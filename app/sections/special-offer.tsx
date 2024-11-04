@@ -1,7 +1,8 @@
-'use client'
+
+'use client';
 
 import React, { useEffect, useState } from 'react';
-import { CardProducts } from '../shop/products/[id]/card-products';
+import { CardProducts } from '../../components/shared/card-products';
 import {
     Carousel,
     CarouselContent,
@@ -19,7 +20,8 @@ interface Product {
     description: string;
     rating: number;
     reviewCount: number;
-    image: string;
+    image: string[];
+    mainImage: string;
     specialOffer: boolean;
 }
 
@@ -35,7 +37,7 @@ export const SpecialOffer: React.FC<Props> = () => {
         fetch('/mocks/products.json')
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Failed to load');
+                    throw new Error('Failed to load data');
                 }
                 return response.json();
             })
@@ -58,20 +60,23 @@ export const SpecialOffer: React.FC<Props> = () => {
                 <Carousel setApi={setCarouselApi} opts={{ loop: true }} className='carousel'>
                     <CarouselContent className='carousel-content'>
                         {products.length > 0 ? (
-                            products.map(product => (
-                                <CarouselItem key={product.id} className='flex justify-center items-center'>
-                                    <CardProducts product={{
-                                        image: product.image,
-                                        title: product.name,
-                                        price: product.price,
-                                        description: product.description,
-                                        rating: product.rating,
-                                        reviewCount: product.reviewCount,
-                                    }} />
+                            products.map((product, index) => (
+                                <CarouselItem key={`${product.id}-${index}`} className='flex justify-center items-center'>
+                                    <CardProducts 
+                                        product={{
+                                            id: product.id, // Передача ID
+                                            image: [product.mainImage],
+                                            name: product.name,
+                                            price: product.price,
+                                            description: product.description,
+                                            rating: product.rating,
+                                            reviewCount: product.reviewCount,
+                                        }} 
+                                    />
                                 </CarouselItem>
                             ))
                         ) : (
-                            <p>No special offers available</p>
+                            <p>Special offers are not available</p>
                         )}
                     </CarouselContent>
                     <CarouselPrevious className="carousel-prev" onClick={handleNextSlide} />
@@ -81,15 +86,13 @@ export const SpecialOffer: React.FC<Props> = () => {
             <div className='offer-right'>
                 <div className='offer-right-info'>
                     <h1 className='offer-right-title'>Special Offer</h1>
-                    <p className='offer-right-text'>Limited offer at a great price.
-                        The promotion will continue until December 1, 2025.
-                        Hurry up to order</p>
+                    <p className='offer-right-text'>Limited-time offer at a great price. The offer lasts until December 1, 2025. Hurry to order</p>
                 </div>
                 <div className='offer-right-button'>
                     <Button className='btn'>Buy</Button>
-                    <Button className='btn'>View detalies</Button>
+                    <Button className='btn'>View Details</Button>
                 </div>
             </div>
         </div>
     );
-}
+};

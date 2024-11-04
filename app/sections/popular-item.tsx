@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { CardProducts } from '../shop/products/[id]/card-products';
+import { CardProducts } from '../../components/shared/card-products';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 
