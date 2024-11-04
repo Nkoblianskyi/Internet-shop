@@ -4,6 +4,7 @@ import Link from 'next/link';
 import SearchWithSelect from '@/components/AppHeader/components/SearchWithSelect';
 import { ShoppingCart } from 'lucide-react';
 import Auth from '@/app/(auth)/Auth';
+import { mockedUser } from '@/mocks/user';
 
 const AppHeader = () => {
   return (
@@ -26,7 +27,11 @@ const AppHeader = () => {
 
           <div className="w-[2px] h-7 bg-[#E4E9EE]"/>
 
-          <Auth />
+          {mockedUser ? (
+            <></>
+          ) : (
+            <Auth />
+          )}
         </div>
       </nav>
     </header>
