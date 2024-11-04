@@ -61,9 +61,9 @@ export const ProductGallery: React.FC<Props> = ({ product }) => {
                     <div className="product-gallery-previous">
                         <CarouselPrevious />
                     </div>
-                    <CarouselContent>
+                    <CarouselContent className="product-gallery-conten">
                         {images.map((img, index) => (
-                            <CarouselItem key={index}>
+                            <CarouselItem key={index} className="main-item">
                                 <Image
                                     src={img}
                                     alt={product.name}

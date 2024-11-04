@@ -1,5 +1,3 @@
-// components/shared/card-products.tsx
-
 'use client';
 
 import React from 'react';
@@ -16,6 +14,7 @@ interface ProductProps {
         description: string;
         rating: number;
         reviewCount: number;
+        popular: boolean;
     };
 }
 
@@ -31,6 +30,7 @@ export const CardProducts: React.FC<ProductProps> = ({ product }) => {
                         height={280}
                         className="card-item-image"
                     />
+                    
                 </div>
                 <div className="card-item-info">
                     <div className="card-item-info-wrapp">
@@ -43,6 +43,9 @@ export const CardProducts: React.FC<ProductProps> = ({ product }) => {
                         <span className="reviews-star-rating">{product.rating.toFixed(1)}</span>
                         <span className="reviews-star-rating-count">({product.reviewCount})</span>
                     </div>
+                    {/* {product.popular && (
+                        <span className="badge badge-popular">Popular</span>
+                    )} */}
                 </div>
             </div>
         </Link>

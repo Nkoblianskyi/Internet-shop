@@ -1,9 +1,10 @@
-'use client'
+'use client';
 
 import React from 'react';
-import products from '@/public/mocks/products.json';
+import productsData from '@/public/mocks/products.json'; // Adjusted import
 import { ProductGallery } from '@/components/shared/product-gallery';
-import { BarVariantProduct } from '@/components/shared/bar-variant-product';
+import { ProductInfo } from '@/components/shared/product-info';
+import { RelatedProduct } from '@/components/shared/related-product';
 
 interface ProductType {
     id: number;
@@ -20,6 +21,7 @@ interface ProductType {
 
 const ProductPage = ({ params }: { params: { id: string } }) => {
     const productId = parseInt(params.id, 10);
+    const products = productsData.products;
     const product: ProductType | undefined = products.find((p) => p.id === productId);
 
     if (!product) {
@@ -27,37 +29,27 @@ const ProductPage = ({ params }: { params: { id: string } }) => {
     }
 
     return (
-        <>
-            <div className="product">
-                <div className='product-search'>
-                    <h1>Category</h1>
-                </div>
-                <div className='product-info'>
-                    <ProductGallery product={product} />
-                    <div className="product-info-card">
-                        <h1 className="product-info-card-title">{product.name}</h1>
-                        <p className="product-info-card-price">${product.price}</p>
-                        <p className="product-info-card-description">{product.description}</p>
-                        <div>
-                            <p className="product-info-card-variant">Product Variants</p>
-                            {product.width && (
-                                <BarVariantProduct title="Width" items={product.width} />
-                            )}
-                            {product.height && (
-                                <BarVariantProduct title="Height" items={product.height} />
-                            )}
-                            {product.color && (
-                                <BarVariantProduct title="Color" items={product.color} />
-                            )}
-                        </div>
-                    </div>
-                </div>
+        <div className="product container">
+            <div className='product-search'>
+                <h1>Category</h1>
             </div>
-            <div className="reviews" style={{ marginTop: '20px' }}>
-                <span>Рейтинг: {product.rating.toFixed(1)}</span>
-                <span> ({product.reviewCount} відгуків)</span>
+            <div className='product-info'>
+                <ProductGallery product={product} />
+                <ProductInfo
+                    name={product.name}
+                    price={product.price}
+                    description={product.description}
+                    rating={product.rating}
+                    reviewCount={product.reviewCount}
+                    width={product.width}
+                    height={product.height}
+                    color={product.color}
+                />
             </div>
-        </>
+            <div>
+                <RelatedProduct id={productId} />
+            </div>
+        </div>
     );
 };
 

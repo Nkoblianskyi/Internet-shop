@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -23,6 +22,7 @@ interface Product {
     image: string[];
     mainImage: string;
     specialOffer: boolean;
+    popular: boolean;
 }
 
 interface Props {
@@ -42,7 +42,7 @@ export const SpecialOffer: React.FC<Props> = () => {
                 return response.json();
             })
             .then(data => {
-                const specialOffers = data.filter((product: Product) => product.specialOffer);
+                const specialOffers = data.products.filter((product: Product) => product.specialOffer);
                 setProducts(specialOffers);
             })
             .catch(error => console.error('Error loading products:', error));
@@ -51,6 +51,12 @@ export const SpecialOffer: React.FC<Props> = () => {
     const handleNextSlide = () => {
         if (carouselApi) {
             carouselApi.scrollNext();
+        }
+    };
+
+    const handlePreviousSlide = () => {
+        if (carouselApi) {
+            carouselApi.scrollPrev();
         }
     };
 
@@ -64,13 +70,14 @@ export const SpecialOffer: React.FC<Props> = () => {
                                 <CarouselItem key={`${product.id}-${index}`} className='flex justify-center items-center'>
                                     <CardProducts 
                                         product={{
-                                            id: product.id, // Передача ID
+                                            id: product.id,
                                             image: [product.mainImage],
                                             name: product.name,
                                             price: product.price,
                                             description: product.description,
                                             rating: product.rating,
                                             reviewCount: product.reviewCount,
+                                            popular: product.popular,
                                         }} 
                                     />
                                 </CarouselItem>
@@ -79,14 +86,14 @@ export const SpecialOffer: React.FC<Props> = () => {
                             <p>Special offers are not available</p>
                         )}
                     </CarouselContent>
-                    <CarouselPrevious className="carousel-prev" onClick={handleNextSlide} />
+                    <CarouselPrevious className="carousel-prev" onClick={handlePreviousSlide} />
                     <CarouselNext className="carousel-next" onClick={handleNextSlide} />
                 </Carousel>
             </div>
             <div className='offer-right'>
                 <div className='offer-right-info'>
                     <h1 className='offer-right-title'>Special Offer</h1>
-                    <p className='offer-right-text'>Limited-time offer at a great price. The offer lasts until December 1, 2025. Hurry to order</p>
+                    <p className='offer-right-text'>Limited-time offer at a great price. The offer lasts until December 1, 2025. Hurry to order!</p>
                 </div>
                 <div className='offer-right-button'>
                     <Button className='btn'>Buy</Button>
