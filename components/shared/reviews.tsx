@@ -10,22 +10,21 @@ interface Review {
 
 interface ReviewsProps {
     params: {
-        id: string; // ID продукту
+        id: string;
     };
 }
 
 export const Reviews: React.FC<ReviewsProps> = ({ params }) => {
     const productId = parseInt(params.id, 10);
     
-    // Тут ви можете отримати відгуки з JSON або API, 
-    // наприклад, фіктивний масив для прикладу.
+
     const reviews: Review[] = [
         { id: 1, productId: 1, content: "Чудовий продукт!", rating: 5 },
         { id: 2, productId: 1, content: "Мені подобається, але є нюанси.", rating: 4 },
         { id: 3, productId: 1, content: "Не відповідає опису.", rating: 2 },
     ];
 
-    // Фільтруємо відгуки за productId
+
     const productReviews = reviews.filter(review => review.productId === productId);
 
     return (

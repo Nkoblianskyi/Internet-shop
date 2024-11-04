@@ -48,7 +48,7 @@ export const PopularItem: React.FC = () => {
         setVisibleCount((prevCount) => prevCount + 4);
     };
 
-    // Check if products is an array before calling slice
+
     const visibleProducts = Array.isArray(products) ? products.slice(0, visibleCount) : [];
 
     return (
@@ -65,7 +65,7 @@ export const PopularItem: React.FC = () => {
                     ))
                     : visibleProducts.map((product) => (
                         <div key={product.id} className='popular-list-item'>
-                            <CardProducts product={product} /> {/* Pass the entire product object */}
+                            <CardProducts product={product} />
                         </div>
                     ))}
             </div>

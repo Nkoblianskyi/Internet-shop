@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import productsData from '@/public/mocks/products.json'; // Adjusted import
+import productsData from '@/public/mocks/products.json';
 import { ProductGallery } from '@/components/shared/product-gallery';
 import { ProductInfo } from '@/components/shared/product-info';
 import { RelatedProduct } from '@/components/shared/related-product';
@@ -25,7 +25,7 @@ const ProductPage = ({ params }: { params: { id: string } }) => {
     const product: ProductType | undefined = products.find((p) => p.id === productId);
 
     if (!product) {
-        return <p>Продукт не знайдено</p>;
+        return <p>Product not found</p>;
     }
 
     return (

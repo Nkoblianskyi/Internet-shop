@@ -27,11 +27,11 @@ export const RelatedProduct: React.FC<{ id: number }> = ({ id }) => {
         return <p>Product not found</p>;
     }
 
-    // Збираємо всі пов'язані продукти
+
     const relatedProducts = product.relatedProducts
         ? product.relatedProducts.map((relatedId) => 
             productsData.relatedProducts.find(p => p.id === relatedId)
-        ).filter(Boolean) // Фільтруємо undefined значення
+        ).filter(Boolean)
         : [];
 
     return (
