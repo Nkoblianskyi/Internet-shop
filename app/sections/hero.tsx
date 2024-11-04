@@ -8,7 +8,7 @@ interface Props {
 
 export const Hero: React.FC<Props> = ({ }) => {
     return (
-        <div className="hero container">
+        <div className="hero container mx-auto">
             <div className="hero-left">
                 <h1 className="hero-left-title">
                     Welcome NJY Design

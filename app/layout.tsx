@@ -5,8 +5,8 @@ import AppHeader from '@/components/AppHeader/AppHeader';
 import { Nunito } from 'next/font/google';
 
 const nunito = Nunito({
-  subsets: ['latin'], // Вказуємо підмножину для латинських символів
-  weight: ['400', '500', '700', '200', '800', '900'], // Вибираємо ваги (400 = normal, 700 = bold)
+  subsets: ['latin'],
+  weight: ['400', '500', '700', '200', '800', '900'],
 });
 
 export const metadata: Metadata = {
