@@ -3,45 +3,43 @@
   grid-template-columns: 1fr 1fr
   align-items: center
   justify-items: center
-  height: 680px
-  padding: 20px
   width: 100%
+  height: 680px
   max-width: 1400px
   gap: 10px
   position: relative
+  overflow: hidden
 
-
-  // Ліва частина
   &-left
     display: flex
     flex-direction: column
     gap: 20px
-    width: 100%
+    max-width: 650px
     position: absolute
     z-index: 2
-    top: 100px
-    left: 120px
+    top: 120px
+    left: 80px
 
     &-title
-      font-size: 2.5rem
-      font-weight: bold
-      margin-bottom: 1rem
-      color: #333
+      font-size: 58px
+      font-weight: 600
+      line-height: 69.6px
 
-    &-title-text
-      font-size: 1.25rem
-      margin-bottom: 1.5rem
-      color: #555
+      &-text
+        font-size: 18px
+        font-weight: 400
+        line-height: 28.8px
+        color: #818B9C
 
     &-button
       display: flex
       gap: 15px
 
   &-right
-    width: 100%
-    height: 680px
     position: absolute
     top: 0
+    width: 100%
+    height: 100%
     z-index: 1
 
     &-image
@@ -50,57 +48,84 @@
       max-height: 680px
       object-fit: cover
 
-  @media (max-width: 1440px)
+@media (min-width: 1024px)
+  .hero-right-image
+    height: 100%
 
-    padding: 15px
+@media (max-width: 768px)
+  .hero
+    width: 100%
+    height: 436px
 
-    .hero-left-title
-      font-size: 2.25rem
-
-    .hero-left-button-item
-      font-size: 0.95rem
-
-  @media (max-width: 1024px)
-    flex-direction: column
-    text-align: center
-    height: auto
-
-    .hero-left
-      max-width: 100%
-      margin-bottom: 20px
+    &-left
+      top: 40px
+      left: 40px
+      height: 200px
+      width: 360px
 
       &-title
-        font-size: 2rem
+        font-size: 28px
+        font-weight: 600
+        line-height: 39.2px
 
-      &-title-text
-        font-size: 1.1rem
+        &-text
+          font-size: 16px
+          font-weight: 400
+          line-height: 25.6px
+          color: #818B9C
+
+    &-right
+      &-image
+        max-height: 400px
+        object-fit: cover
+        object-position: center
+
+@media (max-width: 480px)
+  .hero
+    display: grid
+    grid-template-columns: 1fr
+    grid-template-rows: 1fr 1fr
+    width: 100%
+    height: auto
+    padding: 0
+
+    &-left
+      position: relative
+      width: 100%
+      max-width: 100%
+      top: 0
+      left: 0
+      padding: 10px
+      align-items: center
+      text-align: center
+      gap: 10px
 
       &-button
-        justify-content: center
+        display: flex
+        flex-direction: column
+        gap: 10px
+        width: 100%
 
-    .hero-right
-      max-width: 100%
+        &-title
+          font-size: 28px
+          font-weight: 600
+          line-height: 39.2px
+
+          &-text
+            font-size: 14px
+            font-weight: 400
+            line-height: 22.4px
+
+    &-right
+      position: relative
+      width: 100%
       height: auto
+      display: flex
+      justify-content: center
+      grid-row: 2
 
-  @media (max-width: 768px)
-    padding: 10px
-
-    .hero-left-title
-      font-size: 1.75rem
-
-    .hero-left-title-text
-      font-size: 1rem
-
-    .hero-left-button-item
-      font-size: 0.9rem
-
-  @media (max-width: 480px)
-    .hero-left-title
-      font-size: 1.5rem
-
-    .hero-left-title-text
-      font-size: 0.9rem
-
-    .hero-left-button-item
-      font-size: 0.85rem
-      padding: 8px 16px
+      &-image
+        width: 100%
+        max-width: 480px
+        height: auto
+        object-position: center

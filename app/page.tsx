@@ -1,3 +1,4 @@
+
 import { Category } from "./sections/category";
 import { Hero } from "./sections/hero";
 import { PopularItem } from "./sections/popular-item";

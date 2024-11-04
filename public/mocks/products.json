@@ -1,0 +1,161 @@
+[
+    {
+        "id": 1,
+        "name": "Commode Classic",
+        "price": 278,
+        "description": "Living room furniture",
+        "rating": 4.8,
+        "reviewCount": 528,
+        "image": [
+            "/product3.jpg",
+            "/product2.jpg",
+            "/product3.jpg",
+            "/product2.jpg"
+        ],
+        "mainImage": "/product3.jpg",
+        "width": [
+            "600 cm",
+            "900 cm",
+            "1200 cm"
+        ],
+        "height": [
+            "720 cm",
+            "820 cm",
+            "920 cm"
+        ],
+        "color":[
+            "white",
+            "black",
+            "blue"
+        ],
+        "specialOffer": true
+    },
+    {
+        "id": 2,
+        "name": "Modern Sofa",
+        "price": 550,
+        "description": "Stylish and comfortable sofa",
+        "rating": 4.6,
+        "reviewCount": 432,
+        "image": [
+            "/product1.jpg",
+            "/product2.jpg",
+            "/product.jpg",
+            "/product2.jpg"
+        ],
+        "mainImage": "/product1.jpg",
+        "specialOffer": false
+    },
+    {
+        "id": 3,
+        "name": "Dining Table",
+        "price": 320,
+        "description": "Wooden dining table",
+        "rating": 4.7,
+        "reviewCount": 389,
+        "image": [
+            "/product.jpg",
+            "/product2.jpg",
+            "/product3.jpg",
+            "/product.jpg"
+        ],
+        "mainImage": "/product3.jpg",
+        "specialOffer": true
+    },
+    {
+        "id": 4,
+        "name": "Office Chair",
+        "price": 150,
+        "description": "Ergonomic office chair",
+        "rating": 4.5,
+        "reviewCount": 267,
+        "image": [
+            "/product3.jpg",
+            "/product2.jpg",
+            "/product3.jpg",
+            "/product.jpg"
+        ],
+        "mainImage": "/product.jpg",
+        "specialOffer": false
+    },
+    {
+        "id": 5,
+        "name": "Bedroom Wardrobe",
+        "price": 450,
+        "description": "Spacious and modern wardrobe",
+        "rating": 4.8,
+        "reviewCount": 305,
+        "image": [
+            "/product.jpg",
+            "/product2.jpg",
+            "/product3.jpg",
+            "/product.jpg"
+        ],
+        "mainImage": "/product3.jpg",
+        "specialOffer": true
+    },
+    {
+        "id": 2,
+        "name": "Modern Sofa",
+        "price": 550,
+        "description": "Stylish and comfortable sofa",
+        "rating": 4.6,
+        "reviewCount": 432,
+        "image": [
+            "/product1.jpg",
+            "/product2.jpg",
+            "/product3.jpg",
+            "/product.jpg"
+        ],
+        "mainImage": "/product2.jpg",
+        "specialOffer": false
+    },
+    {
+        "id": 3,
+        "name": "Dining Table",
+        "price": 320,
+        "description": "Wooden dining table",
+        "rating": 4.7,
+        "reviewCount": 389,
+        "image": [
+            "/product1.jpg",
+            "/product2.jpg",
+            "/product3.jpg",
+            "/product.jpg"
+        ],
+        "mainImage": "/product1.jpg",
+        "specialOffer": true
+    },
+    {
+        "id": 4,
+        "name": "Office Chair",
+        "price": 150,
+        "description": "Ergonomic office chair",
+        "rating": 4.5,
+        "reviewCount": 267,
+        "image": [
+            "/product1.jpg",
+            "/product2.jpg",
+            "/product3.jpg",
+            "/product.jpg"
+        ],
+        "mainImage": "/product.jpg",
+        "specialOffer": false
+    },
+    {
+        "id": 5,
+        "name": "Bedroom Wardrobe",
+        "price": 450,
+        "description": "Spacious and modern wardrobe",
+        "rating": 4.8,
+        "reviewCount": 305,
+        "image": [
+            "/product1.jpg",
+            "/product2.jpg",
+            "/product3.jpg",
+            "/product.jpg"
+        ],
+        "mainImage": "/product2.jpg",
+        "specialOffer": true
+    }
+]

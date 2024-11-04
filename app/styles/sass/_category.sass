@@ -2,15 +2,15 @@
     display: flex
     flex-direction: column
     gap: 25px
-    position: relative
-    margin: 80px 120px 50px 120px
+    box-sizing: border-box
+    max-width: 100%
+    margin: 80px
+    padding: 0 1rem
 
     &-title
         display: flex
         align-items: center
-        justify-content: space-between
-        padding: 10px
-
+        justify-content: space-around
         &-text
             font-size: 38px
             font-weight: 600
@@ -20,7 +20,8 @@
         display: flex
         align-items: center
         justify-content: space-around
-        gap: 20px
+        width: 100%
+        flex-wrap: wrap
 
         &-item
             display: flex
@@ -37,7 +38,7 @@
             &:hover
                 background-color: #1E4C2F
                 color: #FFFFFF
-                transform: scale(1.05)
+                transform: scale(1.01)
 
                 .category-container-item-icon
                     color: #FFFFFF
@@ -55,3 +56,46 @@
                 letter-spacing: -0.20000000298023224px
                 text-align: center
                 transition: color 0.3s
+
+@media screen and (max-width: 1024px)
+    .category
+        width: 100%
+        margin: 20px auto
+@media screen and (max-width: 768px)
+    .category
+        width: 100%
+        max-width: 768px
+
+        &-container-item
+            width: calc(100% / 3 - 15px)
+        &-title-text
+            font-size: 28px
+            font-weight: 600
+            line-height: 39.2px
+
+@media screen and (max-width: 480px)
+    .category
+        width: 100%
+        &-title-text
+            font-size: 18px
+            font-weight: 600
+            line-height: 25.2px
+        &-container-item
+            width: 120px
+            height: 126px
+            &-icon
+                width: 32px
+                height: 32px
+            &-text
+                font-size: 14px
+                font-weight: 600
+                line-height: 19.6px
+                text-align: center
+
+    .category-left-button-item
+        width: 94px
+        font-size: 14px
+        font-weight: 600
+        line-height: 19.6px
+        padding: 6px 12px 6px 12px
+

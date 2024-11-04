@@ -8,6 +8,7 @@
     background-color: #1E4C2F;
     color: #FFFFFF;
     border-radius: 5px;
+    border: 1px solid #1E4C2F;
     transition: background-color 0.3s;
 }
 .btn:hover {
@@ -19,6 +20,6 @@
 .container {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 20px;
+    box-sizing: border-box;
 }
 

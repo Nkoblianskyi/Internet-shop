@@ -12,11 +12,11 @@ interface Props {
 
 export const Category: React.FC<Props> = ({ }) => {
     return (
-        <div className='category '>
+        <div className='category mx-auto'>
             <div className='category-title'>
                 <h1 className='category-title-text'>Featured Category</h1>
-                <Button className='hero-left-button-item btn'>
-                    View Detail
+                <Button className='category-left-button-item btn'>
+                    <p className='category-left-button-item-text'>View All</p>
                 </Button>
             </div>
             <div className='category-container'>
