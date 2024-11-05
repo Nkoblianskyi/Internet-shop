@@ -31,7 +31,11 @@
             ],
             "specialOffer": true,
             "popular": true,
-            "relatedProducts": [11, 14, 12]
+            "relatedProducts": [
+                2,
+                3,
+                4
+            ]
         },
         {
             "id": 2,
@@ -64,7 +68,11 @@
             ],
             "specialOffer": false,
             "popular": false,
-            "relatedProducts": [12, 13, 14]
+            "relatedProducts": [
+                1,
+                13,
+                5
+            ]
         },
         {
             "id": 3,
@@ -97,7 +105,11 @@
             ],
             "specialOffer": true,
             "popular": true,
-            "relatedProducts": [13, 14, 15]
+            "relatedProducts": [
+                11,
+                2,
+                4
+            ]
         },
         {
             "id": 4,
@@ -130,7 +142,11 @@
             ],
             "specialOffer": false,
             "popular": false,
-            "relatedProducts": [11, 12, 15]
+            "relatedProducts": [
+                1,
+                2,
+                15
+            ]
         },
         {
             "id": 5,
@@ -163,17 +179,34 @@
             ],
             "specialOffer": true,
             "popular": true,
-            "relatedProducts": [12, 13, 14]
-        }
-    ],
-    "relatedProducts": [
+            "relatedProducts": [
+                2,
+                12,
+                4
+            ]
+        },
         {
             "id": 11,
-            "name": "Lustra",
+            "name": "Lustra A",
             "price": 68,
-            "description": "Accessories",
+            "description": "Stylish chandelier for home decor",
             "rating": 4.8,
             "reviewCount": 528,
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "black",
+                "blue"
+            ],
             "image": [
                 "/lustra-5.jpg",
                 "/lustra-2.jpg",
@@ -182,32 +215,109 @@
             ],
             "mainImage": "/lustra.jpg",
             "specialOffer": true,
-            "popular": false
+            "popular": false,
+            "relatedProducts": [
+                12,
+                13,
+                14
+            ]
         },
         {
             "id": 12,
-            "name": "Glass White",
-            "price": 68,
-            "description": "Accessories",
-            "rating": 4.8,
-            "reviewCount": 528,
+            "name": "Lustra B",
+            "price": 70,
+            "description": "Elegant chandelier for modern homes",
+            "rating": 4.7,
+            "reviewCount": 400,
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "black",
+                "blue"
+            ],
             "image": [
-                "/lustra-5.jpg",
+                "/lustra-4.jpg",
                 "/lustra-2.jpg",
                 "/lustra-3.jpg",
                 "/lustra.jpg"
             ],
-            "mainImage": "/lustra-2.jpg",
+            "mainImage": "/lustra.jpg",
             "specialOffer": true,
-            "popular": false
+            "popular": false,
+            "relatedProducts": [
+                11,
+                13,
+                15
+            ]
         },
         {
             "id": 13,
-            "name": "Glass White",
-            "price": 68,
-            "description": "Accessories",
+            "name": "Lustra C",
+            "price": 65,
+            "description": "Charming chandelier with a vintage touch",
+            "rating": 4.9,
+            "reviewCount": 300,
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "black",
+                "blue"
+            ],
+            "image": [
+                "/lustra.jpg",
+                "/lustra-2.jpg",
+                "/lustra-3.jpg",
+                "/lustra.jpg"
+            ],
+            "mainImage": "/lustra.jpg",
+            "specialOffer": true,
+            "popular": false,
+            "relatedProducts": [
+                11,
+                12,
+                14
+            ]
+        },
+        {
+            "id": 14,
+            "name": "Lustra D",
+            "price": 75,
+            "description": "Luxury chandelier for elegant spaces",
             "rating": 4.8,
-            "reviewCount": 528,
+            "reviewCount": 350,
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "black",
+                "blue"
+            ],
             "image": [
                 "/lustra-5.jpg",
                 "/lustra-2.jpg",
@@ -216,41 +326,49 @@
             ],
             "mainImage": "/lustra.jpg",
             "specialOffer": true,
-            "popular": false
-        },
-        {
-            "id": 14,
-            "name": "Glass White",
-            "price": 68,
-            "description": "Accessories",
-            "rating": 4.8,
-            "reviewCount": 528,
-            "image": [
-                "/lustra-5.jpg",
-                "/lustra-2.jpg",
-                "/lustra-3.jpg",
-                "/lustra.jpg"
-            ],
-            "mainImage": "/lustra-3.jpg",
-            "specialOffer": true,
-            "popular": false
+            "popular": false,
+            "relatedProducts": [
+                11,
+                12,
+                13
+            ]
         },
         {
             "id": 15,
-            "name": "Glass White",
-            "price": 68,
-            "description": "Accessories",
-            "rating": 4.8,
-            "reviewCount": 528,
+            "name": "Lustra E",
+            "price": 72,
+            "description": "Modern chandelier with sleek design",
+            "rating": 4.6,
+            "reviewCount": 275,
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "black",
+                "blue"
+            ],
             "image": [
-                "/lustra-5.jpg",
+                "/lustra-1.jpg",
                 "/lustra-2.jpg",
                 "/lustra-3.jpg",
                 "/lustra.jpg"
             ],
-            "mainImage": "/lustra-4.jpg",
+            "mainImage": "/lustra.jpg",
             "specialOffer": true,
-            "popular": false
+            "popular": false,
+            "relatedProducts": [
+                12,
+                13,
+                14
+            ]
         }
     ]
 }

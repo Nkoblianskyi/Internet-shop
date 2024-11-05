@@ -1,4 +1,4 @@
-'use client';
+// pages/shop/products/[id].tsx
 
 import React from 'react';
 import productsData from '@/public/mocks/products.json';

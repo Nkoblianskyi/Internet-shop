@@ -1,7 +1,6 @@
 import React from 'react';
 import productsData from '@/public/mocks/products.json';
 import { CardProducts } from './card-products';
-import { Button } from '../ui/button';
 
 interface Product {
     id: number;
@@ -16,38 +15,42 @@ interface Product {
     height?: string[];
     color?: string[];
     specialOffer?: boolean;
-    popular?: boolean;
-    relatedProducts?: number[];
+    popular?: boolean; // Дозволяємо popular бути undefined
+    relatedProducts?: number[]; // relatedProducts як масив чисел
 }
 
 export const RelatedProduct: React.FC<{ id: number }> = ({ id }) => {
-    const product = productsData.products.find((product: Product) => product.id === id);
+    const product = productsData.products.find((prod: Product) => prod.id === id);
 
     if (!product) {
         return <p>Product not found</p>;
     }
 
-
-    const relatedProducts = product.relatedProducts
-        ? product.relatedProducts.map((relatedId) => 
-            productsData.relatedProducts.find(p => p.id === relatedId)
-        ).filter(Boolean)
-        : [];
+    const relatedProductsIds = Array.isArray(product.relatedProducts) ? product.relatedProducts : [];
+    const relatedProducts = productsData.products.filter((relatedProduct: Product) =>
+        relatedProductsIds.includes(relatedProduct.id)
+    );
 
     return (
         <div className='related-product container'>
             <div className='related-product-title'>
-                <h1 className='related-product-title-text'>
-                    Related Products
-                </h1>
-                <Button className='related-product-title-button btn'>View All</Button>
+                <h1 className='related-product-title-text'>Related Products</h1>
+                <button className='related-product-title-button btn'>View All</button>
             </div>
             <div className='related-product-card'>
-                {relatedProducts.map((relatedProduct) => (
-                    relatedProduct && (
-                        <CardProducts key={relatedProduct.id} product={relatedProduct} />
-                    )
-                ))}
+                {relatedProducts.length > 0 ? (
+                    relatedProducts.map((relatedProduct: Product) => (
+                        <CardProducts
+                            key={relatedProduct.id}
+                            product={{
+                                ...relatedProduct,
+                                popular: relatedProduct.popular ?? false // Задати значення за замовчуванням
+                            }}
+                        />
+                    ))
+                ) : (
+                    <p>No related products found.</p>
+                )}
             </div>
         </div>
     );
