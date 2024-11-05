@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import { twMerge } from 'tailwind-merge';
 
 interface Props<T> {
   icon: ReactNode;
