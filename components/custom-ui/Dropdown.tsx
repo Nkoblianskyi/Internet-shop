@@ -13,16 +13,22 @@ import { ChevronDown } from 'lucide-react';
 interface Props<T> {
   items: T[];
   selectedItem: T | null;
-  selectItem: (item: T) => void;
+  selectItem: (item: T | null) => void;
   placeholder?: string;
+  hideOnSmallScreen?: boolean;
 }
 
-const Dropdown = <T extends string>({ items, selectedItem, selectItem, placeholder }: Props<T>) => {
+const Dropdown = <T extends string>({ items, selectedItem, selectItem, placeholder, hideOnSmallScreen = false }: Props<T>) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
     <DropdownMenu onOpenChange={(isOpen) => setIsActive(isOpen)}>
-      <DropdownMenuTrigger className="flex items-center px-4 gap-1 font-medium text-nowrap">
+      <DropdownMenuTrigger
+        className={twMerge(
+          hideOnSmallScreen ? 'hidden sm:flex' : '',
+            "items-center px-4 gap-1 font-medium text-nowrap",
+        )}
+      >
         {selectedItem || placeholder}
         <ChevronDown
           size={20}
@@ -36,7 +42,10 @@ const Dropdown = <T extends string>({ items, selectedItem, selectItem, placehold
         {items.map((item) => (
           <DropdownMenuItem
             key={item}
-            onSelect={() => selectItem(item)}
+            onSelect={() => {
+              if (item === selectedItem) selectItem(null);
+              else selectItem(item);
+            }}
             isActive={item === selectedItem}
           >
             {item}
