@@ -1,25 +1,13 @@
-'use client'
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import { CardProducts } from '../../components/shared/card-products';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Product } from '../types/types';
 
-interface Product {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    rating: number;
-    reviewCount: number;
-    image: string;
-}
 
-interface Props {
-    className?: string;
-}
-
-export const PopularItem: React.FC<Props> = () => {
+export const PopularItem: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [visibleCount, setVisibleCount] = useState(4);
     const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +20,13 @@ export const PopularItem: React.FC<Props> = () => {
                 return response.json();
             })
             .then((data) => {
-                setProducts(data);
+                console.log('Fetched data:', data); // Log the fetched data
+                // Make sure to extract products array correctly if the data structure is nested
+                if (Array.isArray(data.products)) {
+                    setProducts(data.products); // Ensure products is an array
+                } else {
+                    console.error('Expected products to be an array, but got:', data.products);
+                }
                 setIsLoading(false);
             })
             .catch((error) => {
@@ -45,7 +39,8 @@ export const PopularItem: React.FC<Props> = () => {
         setVisibleCount((prevCount) => prevCount + 4);
     };
 
-    const visibleProducts = products.slice(0, visibleCount);
+
+    const visibleProducts = Array.isArray(products) ? products.slice(0, visibleCount) : [];
 
     return (
         <div className='container popular'>
@@ -56,7 +51,7 @@ export const PopularItem: React.FC<Props> = () => {
                 {isLoading
                     ? Array.from({ length: visibleCount }).map((_, index) => (
                         <div key={`skeleton-${index}`} className='popular-list-item'>
-                            <Skeleton className="skeleton-item" /> {/* Використовуємо ваш компонент Skeleton */}
+                            <Skeleton className="skeleton-item" />
                         </div>
                     ))
                     : visibleProducts.map((product) => (

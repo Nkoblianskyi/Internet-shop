@@ -1,161 +1,677 @@
-[
-    {
-        "id": 1,
-        "name": "Commode Classic",
-        "price": 278,
-        "description": "Living room furniture",
-        "rating": 4.8,
-        "reviewCount": 528,
-        "image": [
-            "/product3.jpg",
-            "/product2.jpg",
-            "/product3.jpg",
-            "/product2.jpg"
-        ],
-        "mainImage": "/product3.jpg",
-        "width": [
-            "600 cm",
-            "900 cm",
-            "1200 cm"
-        ],
-        "height": [
-            "720 cm",
-            "820 cm",
-            "920 cm"
-        ],
-        "color":[
-            "white",
-            "black",
-            "blue"
-        ],
-        "specialOffer": true
-    },
-    {
-        "id": 2,
-        "name": "Modern Sofa",
-        "price": 550,
-        "description": "Stylish and comfortable sofa",
-        "rating": 4.6,
-        "reviewCount": 432,
-        "image": [
-            "/product1.jpg",
-            "/product2.jpg",
-            "/product.jpg",
-            "/product2.jpg"
-        ],
-        "mainImage": "/product1.jpg",
-        "specialOffer": false
-    },
-    {
-        "id": 3,
-        "name": "Dining Table",
-        "price": 320,
-        "description": "Wooden dining table",
-        "rating": 4.7,
-        "reviewCount": 389,
-        "image": [
-            "/product.jpg",
-            "/product2.jpg",
-            "/product3.jpg",
-            "/product.jpg"
-        ],
-        "mainImage": "/product3.jpg",
-        "specialOffer": true
-    },
-    {
-        "id": 4,
-        "name": "Office Chair",
-        "price": 150,
-        "description": "Ergonomic office chair",
-        "rating": 4.5,
-        "reviewCount": 267,
-        "image": [
-            "/product3.jpg",
-            "/product2.jpg",
-            "/product3.jpg",
-            "/product.jpg"
-        ],
-        "mainImage": "/product.jpg",
-        "specialOffer": false
-    },
-    {
-        "id": 5,
-        "name": "Bedroom Wardrobe",
-        "price": 450,
-        "description": "Spacious and modern wardrobe",
-        "rating": 4.8,
-        "reviewCount": 305,
-        "image": [
-            "/product.jpg",
-            "/product2.jpg",
-            "/product3.jpg",
-            "/product.jpg"
-        ],
-        "mainImage": "/product3.jpg",
-        "specialOffer": true
-    },
-    {
-        "id": 2,
-        "name": "Modern Sofa",
-        "price": 550,
-        "description": "Stylish and comfortable sofa",
-        "rating": 4.6,
-        "reviewCount": 432,
-        "image": [
-            "/product1.jpg",
-            "/product2.jpg",
-            "/product3.jpg",
-            "/product.jpg"
-        ],
-        "mainImage": "/product2.jpg",
-        "specialOffer": false
-    },
-    {
-        "id": 3,
-        "name": "Dining Table",
-        "price": 320,
-        "description": "Wooden dining table",
-        "rating": 4.7,
-        "reviewCount": 389,
-        "image": [
-            "/product1.jpg",
-            "/product2.jpg",
-            "/product3.jpg",
-            "/product.jpg"
-        ],
-        "mainImage": "/product1.jpg",
-        "specialOffer": true
-    },
-    {
-        "id": 4,
-        "name": "Office Chair",
-        "price": 150,
-        "description": "Ergonomic office chair",
-        "rating": 4.5,
-        "reviewCount": 267,
-        "image": [
-            "/product1.jpg",
-            "/product2.jpg",
-            "/product3.jpg",
-            "/product.jpg"
-        ],
-        "mainImage": "/product.jpg",
-        "specialOffer": false
-    },
-    {
-        "id": 5,
-        "name": "Bedroom Wardrobe",
-        "price": 450,
-        "description": "Spacious and modern wardrobe",
-        "rating": 4.8,
-        "reviewCount": 305,
-        "image": [
-            "/product1.jpg",
-            "/product2.jpg",
-            "/product3.jpg",
-            "/product.jpg"
-        ],
-        "mainImage": "/product2.jpg",
-        "specialOffer": true
-    }
-]
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Commode Classic",
+            "price": 278,
+            "description": "Living room furniture",
+            "rating": 4.8,
+            "reviewCount": 528,
+            "category": "living-room",
+            "image": [
+                "/product3.jpg",
+                "/product2.jpg",
+                "/product3.jpg",
+                "/product2.jpg"
+            ],
+            "mainImage": "/product3.jpg",
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "black",
+                "blue"
+            ],
+            "specialOffer": true,
+            "popular": true,
+            "relatedProducts": [
+                2,
+                3,
+                4
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Modern Sofa",
+            "price": 550,
+            "description": "Stylish and comfortable sofa",
+            "rating": 4.6,
+            "reviewCount": 432,
+            "category": "bedroom",
+            "image": [
+                "/product1.jpg",
+                "/product2.jpg",
+                "/product3.jpg",
+                "/product.jpg"
+            ],
+            "mainImage": "/product1.jpg",
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "black",
+                "blue"
+            ],
+            "specialOffer": false,
+            "popular": false,
+            "relatedProducts": [
+                1,
+                13,
+                5
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Dining Table",
+            "price": 320,
+            "description": "Wooden dining table",
+            "rating": 4.7,
+            "reviewCount": 389,
+            "category": "office",
+            "image": [
+                "/product.jpg",
+                "/product2.jpg",
+                "/product3.jpg",
+                "/product.jpg"
+            ],
+            "mainImage": "/product3.jpg",
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "depth": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "black",
+                "blue"
+            ],
+            "specialOffer": true,
+            "popular": true,
+            "relatedProducts": [
+                11,
+                2,
+                4
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Office Chair",
+            "price": 150,
+            "description": "Ergonomic office chair",
+            "rating": 4.5,
+            "reviewCount": 267,
+            "category": "bathroom",
+            "image": [
+                "/product3.jpg",
+                "/product2.jpg",
+                "/product3.jpg",
+                "/product.jpg"
+            ],
+            "mainImage": "/product.jpg",
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "depth": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "black",
+                "blue"
+            ],
+            "specialOffer": false,
+            "popular": false,
+            "relatedProducts": [
+                1,
+                2,
+                15
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Bedroom Wardrobe",
+            "price": 450,
+            "description": "Spacious and modern wardrobe",
+            "rating": 4.8,
+            "reviewCount": 305,
+            "category": "nursery",
+            "image": [
+                "/product.jpg",
+                "/product2.jpg",
+                "/product3.jpg",
+                "/product.jpg"
+            ],
+            "mainImage": "/product3.jpg",
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "depth": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "black",
+                "blue"
+            ],
+            "specialOffer": true,
+            "popular": true,
+            "relatedProducts": [
+                2,
+                12,
+                4
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Luxury Sofa",
+            "price": 600,
+            "description": "Comfortable and stylish luxury sofa",
+            "rating": 4.7,
+            "reviewCount": 480,
+            "category": "living-room",
+            "image": [
+                "/product3.jpg",
+                "/product2.jpg",
+                "/product3.jpg",
+                "/product1.jpg"
+            ],
+            "mainImage": "/product3.jpg",
+            "width": [
+                "70",
+                "110",
+                "150"
+            ],
+            "height": [
+                "80",
+                "90",
+                "100"
+            ],
+            "color": [
+                "grey",
+                "blue",
+                "green"
+            ],
+            "specialOffer": false,
+            "popular": true,
+            "relatedProducts": [
+                7,
+                8,
+                9
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Coffee Table",
+            "price": 220,
+            "description": "Modern coffee table for living rooms",
+            "rating": 4.6,
+            "reviewCount": 378,
+            "category": "living-room",
+            "image": [
+                "/product1.jpg",
+                "/product2.jpg",
+                "/product3.jpg",
+                "/product.jpg"
+            ],
+            "mainImage": "/product1.jpg",
+            "width": [
+                "80",
+                "100",
+                "120"
+            ],
+            "height": [
+                "50",
+                "60",
+                "70"
+            ],
+            "color": [
+                "black",
+                "white",
+                "brown"
+            ],
+            "specialOffer": true,
+            "popular": true,
+            "relatedProducts": [
+                5,
+                2,
+                3
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Modern Bed",
+            "price": 550,
+            "description": "Sleek and stylish modern bed",
+            "rating": 4.7,
+            "reviewCount": 312,
+            "category": "bedroom",
+            "image": [
+                "/product3.jpg",
+                "/product2.jpg",
+                "/product.jpg",
+                "/product3.jpg"
+            ],
+            "mainImage": "/product3.jpg",
+            "width": [
+                "160",
+                "180",
+                "200"
+            ],
+            "height": [
+                "50",
+                "60",
+                "70"
+            ],
+            "color": [
+                "white",
+                "grey",
+                "blue"
+            ],
+            "specialOffer": false,
+            "popular": true,
+            "relatedProducts": [
+                1,
+                5,
+                6
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Wall Mirror",
+            "price": 120,
+            "description": "Elegant wall mirror for any room",
+            "rating": 4.8,
+            "reviewCount": 225,
+            "category": "living-room",
+            "image": [
+                "/product2.jpg",
+                "/product1.jpg",
+                "/product3.jpg",
+                "/product.jpg"
+            ],
+            "mainImage": "/product2.jpg",
+            "width": [
+                "50",
+                "80",
+                "100"
+            ],
+            "height": [
+                "60",
+                "90",
+                "120"
+            ],
+            "color": [
+                "silver",
+                "gold",
+                "black"
+            ],
+            "specialOffer": true,
+            "popular": false,
+            "relatedProducts": [
+                7,
+                3,
+                1
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Dining Chair",
+            "price": 140,
+            "description": "Comfortable dining chair",
+            "rating": 4.6,
+            "reviewCount": 350,
+            "category": "office",
+            "image": [
+                "/product.jpg",
+                "/product2.jpg",
+                "/product3.jpg",
+                "/product1.jpg"
+            ],
+            "mainImage": "/product.jpg",
+            "width": [
+                "40",
+                "50",
+                "60"
+            ],
+            "height": [
+                "90",
+                "100",
+                "110"
+            ],
+            "color": [
+                "black",
+                "white",
+                "brown"
+            ],
+            "specialOffer": false,
+            "popular": true,
+            "relatedProducts": [
+                4,
+                5,
+                2
+            ]
+        },
+        {
+            "id": 11,
+            "name": "Lustra A",
+            "price": 68,
+            "description": "Stylish chandelier for home decor",
+            "rating": 4.8,
+            "reviewCount": 528,
+            "category": "lounge",
+            "new": false,
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "black",
+                "blue"
+            ],
+            "depth": [
+                "72",
+                "82",
+                "92"
+            ],
+            "image": [
+                "/lustra-5.jpg",
+                "/lustra-2.jpg",
+                "/lustra-3.jpg",
+                "/lustra.jpg"
+            ],
+            "mainImage": "/lustra.jpg",
+            "specialOffer": true,
+            "popular": false,
+            "relatedProducts": [
+                12,
+                13,
+                14
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Lustra B",
+            "price": 70,
+            "description": "Elegant chandelier for modern homes",
+            "rating": 4.7,
+            "reviewCount": 400,
+            "category": "hallways",
+            "new": true,
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "depth": [
+                "72",
+                "82",
+                "92",
+                "62"
+            ],
+            "color": [
+                "white",
+                "black",
+                "blue"
+            ],
+            "image": [
+                "/lustra-4.jpg",
+                "/lustra-2.jpg",
+                "/lustra-3.jpg",
+                "/lustra.jpg"
+            ],
+            "mainImage": "/lustra.jpg",
+            "specialOffer": false,
+            "popular": true,
+            "relatedProducts": [
+                3,
+                4,
+                1
+            ]
+        },
+        {
+            "id": 13,
+            "name": "Bookcase",
+            "price": 400,
+            "description": "Wooden bookcase for your office",
+            "rating": 4.5,
+            "reviewCount": 350,
+            "category": "living-room",
+            "image": [
+                "/product2.jpg",
+                "/product.jpg",
+                "/product1.jpg",
+                "/product3.jpg"
+            ],
+            "mainImage": "/product1.jpg",
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "depth": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "black",
+                "brown"
+            ],
+            "specialOffer": true,
+            "popular": false,
+            "relatedProducts": [
+                1,
+                4,
+                9
+            ]
+        },
+        {
+            "id": 14,
+            "name": "Washing Machine",
+            "price": 350,
+            "description": "High-efficiency washing machine",
+            "rating": 4.7,
+            "reviewCount": 412,
+            "category": "bathroom",
+            "image": [
+                "/product1.jpg",
+                "/product3.jpg",
+                "/product2.jpg",
+                "/product1.jpg"
+            ],
+            "mainImage": "/product3.jpg",
+            "width": [
+                "60",
+                "90",
+                "120"
+            ],
+            "height": [
+                "72",
+                "82",
+                "92"
+            ],
+            "color": [
+                "white",
+                "grey"
+            ],
+            "specialOffer": true,
+            "popular": false,
+            "relatedProducts": [
+                5,
+                6,
+                7
+            ]
+        },
+        {
+            "id": 15,
+            "name": "Mini Fridge",
+            "price": 199,
+            "description": "Compact mini fridge for small apartments",
+            "rating": 4.6,
+            "reviewCount": 325,
+            "category": "kitchen",
+            "image": [
+                "/product1.jpg",
+                "/product2.jpg",
+                "/product3.jpg",
+                "/product.jpg"
+            ],
+            "mainImage": "/product3.jpg",
+            "width": [
+                "50",
+                "80",
+                "100"
+            ],
+            "height": [
+                "60",
+                "70",
+                "80"
+            ],
+            "color": [
+                "white",
+                "black"
+            ],
+            "specialOffer": true,
+            "popular": false,
+            "relatedProducts": [
+                2,
+                10,
+                3
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Coffee Machine",
+            "price": 120,
+            "description": "Espresso coffee machine for home",
+            "rating": 4.7,
+            "reviewCount": 442,
+            "category": "kitchen",
+            "image": [
+                "/product.jpg",
+                "/product1.jpg",
+                "/product2.jpg"
+            ],
+            "mainImage": "/product2.jpg",
+            "width": [
+                "30",
+                "40",
+                "50"
+            ],
+            "height": [
+                "20",
+                "30",
+                "40"
+            ],
+            "color": [
+                "black",
+                "white"
+            ],
+            "specialOffer": false,
+            "popular": true,
+            "relatedProducts": [
+                1,
+                15,
+                9
+            ]
+        },
+        {
+            "id": 17,
+            "name": "Air Conditioner",
+            "price": 950,
+            "description": "Powerful air conditioner for large rooms",
+            "rating": 4.8,
+            "reviewCount": 175,
+            "category": "living-room",
+            "image": [
+                "/product3.jpg",
+                "/product.jpg",
+                "/product2.jpg"
+            ],
+            "mainImage": "/product1.jpg",
+            "width": [
+                "80",
+                "120",
+                "150"
+            ],
+            "height": [
+                "40",
+                "60",
+                "80"
+            ],
+            "color": [
+                "white",
+                "black"
+            ],
+            "specialOffer": true,
+            "popular": false,
+            "relatedProducts": [
+                16,
+                19,
+                1
+            ]
+        }
+    ]
+}

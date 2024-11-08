@@ -21,17 +21,17 @@ export const Hero: React.FC<Props> = ({ }) => {
                         Shop Now
                     </Button>
                     <Button className="hero-left-button-item btn">
-                        Learn More
+                        View Detail
                     </Button>
                 </div>
             </div>
             <div className="hero-right">
-                <Image 
-                src='/hero.jpg' 
-                alt='product-gallery' 
-                width={1420} 
-                height={620}
-                className='hero-right-image'
+                <Image
+                    src='/hero.jpg'
+                    alt='product-gallery'
+                    width={1420}
+                    height={620}
+                    className='hero-right-image'
                 />
             </div>
         </div>
