@@ -13,6 +13,10 @@
     &-list
         display: grid
         grid-template-columns: repeat(4, 1fr)
+        grid-row: 2
+        justify-content: center
+        justify-items: center
+        align-items: center
         gap: 24px
         width: 100%
 
@@ -36,4 +40,8 @@
 
 @media (max-width: 480px)
     .popular-list
-        grid-template-columns: repeat(2, 1fr)
+        display: grid
+        grid-template-columns: 1fr
+        grid-template-rows: repeat(3, 1fr)
+        grid-column-gap: 0px
+        grid-row-gap: 16px

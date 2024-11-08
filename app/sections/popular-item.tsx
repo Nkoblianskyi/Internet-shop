@@ -4,17 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { CardProducts } from '../../components/shared/card-products';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Product } from '../types/types';
 
-interface Product {
-    id: number;
-    name: string;
-    price: number;
-    description: string;
-    rating: number;
-    reviewCount: number;
-    image: string[];
-    popular: boolean;
-}
 
 export const PopularItem: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);

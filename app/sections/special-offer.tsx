@@ -19,10 +19,16 @@ interface Product {
     description: string;
     rating: number;
     reviewCount: number;
+    category: string;
     image: string[];
     mainImage: string;
+    width: string[];
+    height: string[];
+    color: string[];
+    depth?: string[];
     specialOffer: boolean;
     popular: boolean;
+    relatedProducts?: number[];
 }
 
 interface Props {
@@ -61,43 +67,49 @@ export const SpecialOffer: React.FC<Props> = () => {
     };
 
     return (
-        <div className='offer'>
-            <div className='offer-left'>
-                <Carousel setApi={setCarouselApi} opts={{ loop: true }} className='carousel'>
-                    <CarouselContent className='carousel-content'>
+        <div className="offer">
+            <div className="offer-left">
+                <Carousel setApi={setCarouselApi} opts={{ loop: true }} className="carousel">
+                    <CarouselContent className="carousel-content">
                         {products.length > 0 ? (
-                            products.map((product, index) => (
-                                <CarouselItem key={`${product.id}-${index}`} className='flex justify-center items-center'>
-                                    <CardProducts 
+                            products.map((product) => (
+                                <CarouselItem key={product.id} className="flex justify-center items-center">
+                                    <CardProducts
                                         product={{
                                             id: product.id,
-                                            image: [product.mainImage],
                                             name: product.name,
                                             price: product.price,
                                             description: product.description,
                                             rating: product.rating,
                                             reviewCount: product.reviewCount,
+                                            category: product.category,
+                                            image: product.image,
+                                            mainImage: product.mainImage,
+                                            width: product.width,
+                                            height: product.height,
+                                            color: product.color,
+                                            specialOffer: product.specialOffer,
                                             popular: product.popular,
-                                        }} 
+                                        }}
                                     />
                                 </CarouselItem>
                             ))
                         ) : (
-                            <p>Special offers are not available</p>
+                            <p>No special offers available</p>
                         )}
                     </CarouselContent>
                     <CarouselPrevious className="carousel-prev" onClick={handlePreviousSlide} />
                     <CarouselNext className="carousel-next" onClick={handleNextSlide} />
                 </Carousel>
             </div>
-            <div className='offer-right'>
-                <div className='offer-right-info'>
-                    <h1 className='offer-right-title'>Special Offer</h1>
-                    <p className='offer-right-text'>Limited-time offer at a great price. The offer lasts until December 1, 2025. Hurry to order!</p>
+            <div className="offer-right">
+                <div className="offer-right-info">
+                    <h1 className="offer-right-title">Special Offer</h1>
+                    <p className="offer-right-text">Limited-time offer at a great price. The offer lasts until December 1, 2025. Hurry to order!</p>
                 </div>
-                <div className='offer-right-button'>
-                    <Button className='btn'>Buy</Button>
-                    <Button className='btn'>View Details</Button>
+                <div className="offer-right-button">
+                    <Button className="btn">Buy</Button>
+                    <Button className="btn">View Details</Button>
                 </div>
             </div>
         </div>
