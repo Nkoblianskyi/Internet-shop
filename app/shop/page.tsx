@@ -4,12 +4,16 @@ import { CardProducts } from '@/components/shared/card-products';
 import { Filters } from '@/components/shared/filters';
 import React, { useEffect, useState } from 'react';
 import { Product } from '../types/types';
+import { useSearchParams } from 'next/navigation';
 
 const Shop: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+
+    const searchParams = useSearchParams();
+    const category = searchParams.get('category');
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -24,23 +28,25 @@ const Shop: React.FC = () => {
 
                 if (Array.isArray(productList)) {
                     setProducts(productList);
-                    setFilteredProducts(productList);
+
+                    if (category) {
+                        const filtered = productList.filter((product: Product) => product.category === category);
+                        setFilteredProducts(filtered);
+                    } else {
+                        setFilteredProducts(productList);
+                    }
                 } else {
                     throw new Error('The received data is not an array');
                 }
             } catch (err: unknown) {
-                if (err instanceof Error) {
-                    setError(err.message);
-                } else {
-                    setError('An unknown error occurred');
-                }
+                setError(err instanceof Error ? err.message : 'An unknown error occurred');
             } finally {
                 setLoading(false);
             }
         };
 
         fetchProducts();
-    }, []);
+    }, [category]);
 
     const handleFilterChange = (newFilteredProducts: Product[]) => {
         setFilteredProducts(newFilteredProducts);
@@ -52,7 +58,11 @@ const Shop: React.FC = () => {
     return (
         <div className="shop container mx-auto">
             <div className="shop-filters">
-                <Filters products={products} onFilterChange={handleFilterChange} />
+                <Filters
+                    products={products}
+                    initialCategory={category ?? ''} // Передаємо початкову категорію у Filters
+                    onFilterChange={handleFilterChange}
+                />
             </div>
             <div className="shop-product-list">
                 {filteredProducts.map((product) => (

@@ -8,15 +8,26 @@ import { Product } from '../../app/types/types';
 
 interface FiltersProps {
     products: Product[];
+    initialCategory: string; // Додаємо цей пропс
     onFilterChange: (filteredProducts: Product[]) => void;
 }
 
-export const Filters: React.FC<FiltersProps> = ({ products, onFilterChange }) => {
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+export const Filters: React.FC<FiltersProps> = ({ products, initialCategory, onFilterChange }) => {
+    const [selectedCategories, setSelectedCategories] = useState<string[]>(initialCategory ? [initialCategory] : []);
     const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
     const [isNew, setIsNew] = useState<boolean>(false);
     const [isPopular, setIsPopular] = useState<boolean>(false);
     const [isSpecialOffer, setIsSpecialOffer] = useState<boolean>(false);
+
+    useEffect(() => {
+        applyFilters(selectedCategories, priceRange, isNew, isPopular, isSpecialOffer);
+    }, [selectedCategories, priceRange, isNew, isPopular, isSpecialOffer, products]);
+
+    useEffect(() => {
+        if (initialCategory) {
+            setSelectedCategories([initialCategory]);
+        }
+    }, [initialCategory]);
 
     const applyFilters = (
         categories: string[],
@@ -26,29 +37,17 @@ export const Filters: React.FC<FiltersProps> = ({ products, onFilterChange }) =>
         specialOffer: boolean
     ) => {
         const filteredProducts = products.filter((product) => {
-            const matchesCategory =
-                categories.length === 0 || categories.includes(product.category);
-            const matchesPrice =
-                product.price >= price[0] && product.price <= price[1];
+            const matchesCategory = categories.length === 0 || categories.includes(product.category);
+            const matchesPrice = product.price >= price[0] && product.price <= price[1];
             const matchesNew = !newProduct || product.new === newProduct;
             const matchesPopular = !popular || product.popular === popular;
             const matchesSpecialOffer = !specialOffer || product.specialOffer === specialOffer;
 
-            return (
-                matchesCategory &&
-                matchesPrice &&
-                matchesNew &&
-                matchesPopular &&
-                matchesSpecialOffer
-            );
+            return matchesCategory && matchesPrice && matchesNew && matchesPopular && matchesSpecialOffer;
         });
 
         onFilterChange(filteredProducts);
     };
-
-    useEffect(() => {
-        applyFilters(selectedCategories, priceRange, isNew, isPopular, isSpecialOffer);
-    }, [selectedCategories, priceRange, isNew, isPopular, isSpecialOffer, products]);
 
     const handleCategoryChange = (category: string, isChecked: boolean) => {
         const updatedCategories = isChecked
@@ -73,7 +72,6 @@ export const Filters: React.FC<FiltersProps> = ({ products, onFilterChange }) =>
         setIsSpecialOffer(checked);
     };
 
-    // Обробка вводу мінімальної та максимальної ціни
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'min' | 'max') => {
         const value = Number(e.target.value);
         if (type === 'min' && value <= priceRange[1]) {
@@ -83,14 +81,12 @@ export const Filters: React.FC<FiltersProps> = ({ products, onFilterChange }) =>
         }
     };
 
-    // Унікальні категорії для фільтрації
     const uniqueCategories = Array.from(new Set(products.map((product) => product.category)));
 
     return (
         <div className="filters">
             <h1 className='filters-title'>Filters</h1>
 
-            {/* Category Filters */}
             <CheckboxGroup
                 text="Categories"
                 items={uniqueCategories.map((category) => ({
@@ -102,7 +98,6 @@ export const Filters: React.FC<FiltersProps> = ({ products, onFilterChange }) =>
                 className='filters-checkboxes'
             />
 
-            {/* Special Filters */}
             <CheckboxGroup
                 text="New"
                 items={[{ label: 'New', value: 'new' }]}
@@ -125,10 +120,8 @@ export const Filters: React.FC<FiltersProps> = ({ products, onFilterChange }) =>
                 className='filters-checkboxes'
             />
 
-            {/* Price Range Filter */}
-
             <div className="filters-price-range">
-            <h3>Prices from and to</h3>
+                <h3>Prices from and to</h3>
                 <RangeSlider
                     min={0}
                     max={1000}
