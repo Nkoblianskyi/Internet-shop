@@ -10,7 +10,7 @@ body {
 }
 
 * {
-  color: #333;
+  box-sizing: border-box;
 }
 
 @layer utilities {
@@ -47,6 +47,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -79,6 +80,7 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -86,19 +88,19 @@ body {
 
 @layer components {
   .container {
-      @apply mx-auto px-4;
+    @apply mx-auto px-4;
 
-      @media (min-width: 1440px) {
-          max-width: 1440px;
-      }
+    @media (min-width: 1440px) {
+      max-width: 1440px;
+    }
 
-      @media (max-width: 1440px) and (min-width: 1024px) {
-          max-width: 1024px;
-      }
+    @media (max-width: 1440px) and (min-width: 1024px) {
+      max-width: 1024px;
+    }
 
-      @media (max-width: 1024px) {
-          max-width: 100%;
-          padding: 0 1rem;
-      }
+    @media (max-width: 1024px) {
+      max-width: 100%;
+      padding: 0 1rem;
+    }
   }
 }

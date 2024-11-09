@@ -60,7 +60,7 @@ const Shop: React.FC = () => {
             <div className="shop-filters">
                 <Filters
                     products={products}
-                    initialCategory={category ?? ''} // Передаємо початкову категорію у Filters
+                    initialCategory={category ?? ''}
                     onFilterChange={handleFilterChange}
                 />
             </div>

@@ -9,7 +9,7 @@ import ProfileButton from '@/components/ProfileButton/ProfileButton';
 
 const AppHeader = () => {
   return (
-    <header className="flex justify-center items-center py-3 pl-4 md:px-[80px] md:py-7 w-full">
+    <header className="w-full bg-white shadow-md py-3 px-4 md:px-[80px] md:py-7">
       <nav className="flex justify-between items-center gap-2 w-full">
         <Link href="/" className="hidden sm:block">
           Logo
@@ -26,7 +26,7 @@ const AppHeader = () => {
             />
           </Link>
 
-          <div className="w-[2px] h-7 bg-[#E4E9EE]"/>
+          <div className="w-[2px] h-7 bg-[#E4E9EE]" />
 
           {mockedUser ? (
             <ProfileButton />
