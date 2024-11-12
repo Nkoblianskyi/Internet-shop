@@ -3,7 +3,7 @@ import { DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registrationSchema } from '@/lib/zodSchemas/authSchema';
-import CustomInput from '@/components/custom-ui/CustomInput';
+import CustomInput from '@/components/shared/custom-ui/CustomInput';
 
 interface Props {
   changeMode: () => void;

@@ -15,8 +15,9 @@ interface Product {
     height?: string[];
     color?: string[];
     specialOffer?: boolean;
-    popular?: boolean; // Дозволяємо popular бути undefined
-    relatedProducts?: number[]; // relatedProducts як масив чисел
+    popular?: boolean;
+    relatedProducts?: number[];
+    category?: string;
 }
 
 export const RelatedProduct: React.FC<{ id: number }> = ({ id }) => {
@@ -44,7 +45,7 @@ export const RelatedProduct: React.FC<{ id: number }> = ({ id }) => {
                             key={relatedProduct.id}
                             product={{
                                 ...relatedProduct,
-                                popular: relatedProduct.popular ?? false // Задати значення за замовчуванням
+                                popular: relatedProduct.popular ?? false
                             }}
                         />
                     ))

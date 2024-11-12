@@ -9,7 +9,7 @@ import ProfileButton from '@/components/ProfileButton/ProfileButton';
 
 const AppHeader = () => {
   return (
-    <header className="w-full bg-white shadow-md py-3 px-4 md:px-[80px] md:py-7">
+    <header className="w-full bg-white shadow-md py-3 px-4  md:py-7 container">
       <nav className="flex justify-between items-center gap-2 w-full">
         <Link href="/" className="hidden sm:block">
           Logo

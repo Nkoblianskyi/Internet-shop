@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import CustomInput from '@/components/custom-ui/CustomInput';
+import CustomInput from '@/components/shared/custom-ui/CustomInput';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema } from '@/lib/zodSchemas/authSchema';

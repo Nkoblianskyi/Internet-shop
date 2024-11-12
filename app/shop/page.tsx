@@ -13,7 +13,7 @@ const Shop: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     const searchParams = useSearchParams();
-    const category = searchParams.get('category');
+    const category = searchParams.get('category'); // Отримуємо параметр категорії з URL
 
     useEffect(() => {
         const fetchProducts = async () => {
