@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { LogOut } from 'lucide-react';
-import UserInfo from '@/components/ProfileButton/components/UserInfo';
-import UserBalanceInfo from '@/components/ProfileButton/components/UserBalanceInfo';
-import ProfileMenu from '@/components/ProfileButton/components/ProfileMenu';
+import UserInfo from '@/components/profil-button/components/user-info';
+import UserBalanceInfo from '@/components/profil-button/components/user-balance-info';
+import ProfileMenu from '@/components/profil-button/components/profile-menu';
 
 const ProfileButton = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

@@ -1,4 +1,4 @@
-import ProfileRow from '@/components/ProfileButton/components/ProfileRow';
+import ProfileRow from '@/components/profil-button/components/profile-row';
 import { Coins, Wallet } from 'lucide-react';
 import numberToCurrency from '@/utils/numberToCurrency';
 import { mockedUser } from '@/mocks/user';

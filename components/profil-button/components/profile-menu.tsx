@@ -1,4 +1,4 @@
-import ProfileRow from '@/components/ProfileButton/components/ProfileRow';
+import ProfileRow from '@/components/profil-button/components/profile-row';
 import { Heart, Receipt, Settings } from 'lucide-react';
 
 const ProfileMenu = () => {
