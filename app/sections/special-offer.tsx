@@ -20,12 +20,11 @@ interface Product {
     rating: number;
     reviewCount: number;
     category: string;
-    image: string[];
-    mainImage: string;
+    image: string[]; // Images from AWS
+    mainImage: string; // Main image from AWS
     width: string[];
     height: string[];
     color: string[];
-    depth?: string[];
     specialOffer: boolean;
     popular: boolean;
     relatedProducts?: number[];
@@ -40,7 +39,7 @@ export const SpecialOffer: React.FC<Props> = () => {
     const [carouselApi, setCarouselApi] = useState<EmblaCarouselType | undefined>(undefined);
 
     useEffect(() => {
-        fetch('/mocks/products.json')
+        fetch('http://localhost:5000/api/products') // Make sure the API server is working
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to load data');
@@ -48,10 +47,15 @@ export const SpecialOffer: React.FC<Props> = () => {
                 return response.json();
             })
             .then(data => {
-                const specialOffers = data.products.filter((product: Product) => product.specialOffer);
-                setProducts(specialOffers);
+                if (Array.isArray(data)) {
+                    const specialOffers = data.filter((product: Product) => product.specialOffer);
+                    setProducts(specialOffers);
+                }
             })
-            .catch(error => console.error('Error loading products:', error));
+            .catch(error => {
+                // General error handling without unnecessary console logs
+                console.error('Error loading products:', error);
+            });
     }, []);
 
     const handleNextSlide = () => {
@@ -84,7 +88,7 @@ export const SpecialOffer: React.FC<Props> = () => {
                                             reviewCount: product.reviewCount,
                                             category: product.category,
                                             image: product.image,
-                                            mainImage: product.mainImage,
+                                            mainImage: product.mainImage, // Make sure this URL is correct
                                             width: product.width,
                                             height: product.height,
                                             color: product.color,
@@ -105,10 +109,10 @@ export const SpecialOffer: React.FC<Props> = () => {
             <div className="offer-right">
                 <div className="offer-right-info">
                     <h1 className="offer-right-title">Special Offer</h1>
-                    <p className="offer-right-text">Limited-time offer at a great price. The offer lasts until December 1, 2025. Hurry to order!</p>
+                    <p className="offer-right-text">Limited time offer at a great price. Available until December 1, 2025. Hurry up and place your order!</p>
                 </div>
                 <div className="offer-right-button">
-                    <Button className="btn">Buy</Button>
+                    <Button className="btn">Buy Now</Button>
                     <Button className="btn">View Details</Button>
                 </div>
             </div>

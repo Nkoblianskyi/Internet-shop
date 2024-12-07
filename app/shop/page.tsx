@@ -1,10 +1,10 @@
 'use client';
 
+import React, { useEffect, useState, useCallback } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { CardProducts } from '@/components/shared/card-products';
 import { Filters } from '@/components/shared/filters';
-import React, { useEffect, useState } from 'react';
 import { Product } from '../types/types';
-import { useSearchParams } from 'next/navigation';
 
 const Shop: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
@@ -13,32 +13,22 @@ const Shop: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     const searchParams = useSearchParams();
-    const category = searchParams.get('category'); // Отримуємо параметр категорії з URL
+    const category = searchParams.get('category');
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('/mocks/products.json');
-                if (!response.ok) {
-                    throw new Error('Failed to load products');
-                }
-
-                const data = await response.json();
-                const productList = data.products;
-
-                if (Array.isArray(productList)) {
-                    setProducts(productList);
-
-                    if (category) {
-                        const filtered = productList.filter((product: Product) => product.category === category);
-                        setFilteredProducts(filtered);
-                    } else {
-                        setFilteredProducts(productList);
-                    }
-                } else {
-                    throw new Error('The received data is not an array');
-                }
-            } catch (err: unknown) {
+                const response = await fetch('http://localhost:5000/api/products');
+                if (!response.ok) throw new Error('Failed to load products');
+                const data: Product[] = await response.json();
+                setProducts(data);
+                setFilteredProducts(
+                    category
+                        ? data.filter((product) => product.category === category)
+                        : data
+                );
+            } catch (err) {
+                console.error('Error:', err);
                 setError(err instanceof Error ? err.message : 'An unknown error occurred');
             } finally {
                 setLoading(false);
@@ -48,9 +38,9 @@ const Shop: React.FC = () => {
         fetchProducts();
     }, [category]);
 
-    const handleFilterChange = (newFilteredProducts: Product[]) => {
+    const handleFilterChange = useCallback((newFilteredProducts: Product[]) => {
         setFilteredProducts(newFilteredProducts);
-    };
+    }, []);
 
     if (loading) return <p>Loading products...</p>;
     if (error) return <p>Error: {error}</p>;
@@ -64,8 +54,8 @@ const Shop: React.FC = () => {
                     onFilterChange={handleFilterChange}
                 />
             </div>
-            <div className="shop-product-list">
-                {filteredProducts.map((product) => (
+            <div className="shop-product-list grid grid-cols-3 gap-4">
+                {filteredProducts.map((product: Product) => (
                     <div key={product.id} className="shop-product-list-item">
                         <CardProducts product={product} />
                     </div>

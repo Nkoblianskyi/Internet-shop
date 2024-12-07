@@ -6,30 +6,26 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Product } from '../types/types';
 
-
 export const PopularItem: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
-    const [visibleCount, setVisibleCount] = useState(4);
+    const [visibleCount, setVisibleCount] = useState(8);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
-        fetch('/mocks/products.json')
+        fetch('http://localhost:5000/api/products')
             .then((response) => {
-                if (!response.ok) throw new Error('Failed to load');
+                if (!response.ok) throw new Error('Failed to load data');
                 return response.json();
             })
             .then((data) => {
-                console.log('Fetched data:', data); // Log the fetched data
-                // Make sure to extract products array correctly if the data structure is nested
-                if (Array.isArray(data.products)) {
-                    setProducts(data.products); // Ensure products is an array
-                } else {
-                    console.error('Expected products to be an array, but got:', data.products);
+                if (Array.isArray(data)) {
+                    setProducts(data);
                 }
                 setIsLoading(false);
             })
             .catch((error) => {
+                // General error handling without unnecessary console logs
                 console.error('Error loading products:', error);
                 setIsLoading(false);
             });
@@ -39,29 +35,28 @@ export const PopularItem: React.FC = () => {
         setVisibleCount((prevCount) => prevCount + 4);
     };
 
-
-    const visibleProducts = Array.isArray(products) ? products.slice(0, visibleCount) : [];
+    const visibleProducts = products.slice(0, visibleCount);
 
     return (
-        <div className='container popular'>
-            <div className='popular-title'>
-                <h1 className='popular-title-text'>Popular Items</h1>
+        <div className="container popular">
+            <div className="popular-title">
+                <h1 className="popular-title-text">Popular Items</h1>
             </div>
-            <div className='popular-list'>
+            <div className="popular-list">
                 {isLoading
                     ? Array.from({ length: visibleCount }).map((_, index) => (
-                        <div key={`skeleton-${index}`} className='popular-list-item'>
+                        <div key={`skeleton-${index}`} className="popular-list-item">
                             <Skeleton className="skeleton-item" />
                         </div>
                     ))
                     : visibleProducts.map((product) => (
-                        <div key={product.id} className='popular-list-item'>
+                        <div key={product.id} className="popular-list-item">
                             <CardProducts product={product} />
                         </div>
                     ))}
             </div>
             {!isLoading && visibleCount < products.length && (
-                <Button className='btn popular-button' onClick={handleLoadMore}>
+                <Button className="btn popular-button" onClick={handleLoadMore}>
                     Load More
                 </Button>
             )}

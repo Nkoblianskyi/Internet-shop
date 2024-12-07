@@ -14,33 +14,28 @@ interface Inputs {
   password: string;
 }
 
-const Login: FC<Props> = ({ changeMode }) => {
+export const Login: FC<Props> = ({ changeMode }) => {
   const {
     register,
     handleSubmit,
-    formState: {
-      errors
-    }
+    formState: { errors },
   } = useForm<Inputs>({
-    resolver: zodResolver(loginSchema)
+    resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+  };
 
   return (
     <>
       <DialogHeader>
-        <DialogTitle className="text-2xl">
-          Sign In
-        </DialogTitle>
+        <DialogTitle className="text-2xl">Sign In</DialogTitle>
       </DialogHeader>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-10"
-      >
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10">
         <div className="flex flex-col gap-2">
           <CustomInput
-            type='email'
+            type="email"
             label="Email"
             placeholder="johndoe@gmail.com"
             error={errors.email?.message}
@@ -48,7 +43,7 @@ const Login: FC<Props> = ({ changeMode }) => {
             registerId="email"
           />
           <CustomInput
-            type='password'
+            type="password"
             label="Password"
             placeholder="Password"
             error={errors.password?.message}
@@ -75,5 +70,3 @@ const Login: FC<Props> = ({ changeMode }) => {
     </>
   );
 };
-
-export default Login;

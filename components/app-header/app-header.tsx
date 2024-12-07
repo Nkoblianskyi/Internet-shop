@@ -1,11 +1,11 @@
 "use client";
 
 import Link from 'next/link';
-import SearchWithSelect from '@/components/AppHeader/components/search-with-select';
+import SearchWithSelect from '@/components/app-header/components/search-with-select';
 import { ShoppingCart } from 'lucide-react';
-import Auth from '@/app/(auth)/Auth';
 import { mockedUser } from '@/mocks/user';
 import ProfileButton from '@/components/profil-button/profile-button';
+import { Auth } from '@/app/(auth)/auth';
 
 const AppHeader = () => {
   return (

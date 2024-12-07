@@ -1,7 +1,5 @@
-'use client';
-
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image'; // або 'react-image', якщо використовуєте звичайні зображення
 import {
     Carousel,
     CarouselContent,
@@ -9,7 +7,7 @@ import {
     CarouselPrevious,
     CarouselNext,
     CarouselApi
-} from '@/components/ui/carousel';
+} from '@/components/ui/carousel'; // Ваш компонент каруселі
 
 interface Product {
     id: number;
@@ -18,17 +16,36 @@ interface Product {
     description: string;
     rating: number;
     reviewCount: number;
-    image: string[];
-    specialOffer?: boolean;
+    image: string[]; // Масив з іменами файлів зображень
+    mainImage: string; // Основне зображення
 }
 
 interface Props {
-    product: Product | null | undefined;
+    productId: number; // Передаємо тільки productId
 }
 
-export const ProductGallery: React.FC<Props> = ({ product }) => {
+export const ProductGallery: React.FC<Props> = ({ productId }) => {
+    const [product, setProduct] = useState<Product | null>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+
+    // Функція для отримання даних продукту з API
+    const fetchProduct = async (id: number) => {
+        try {
+            const res = await fetch(`http://localhost:5000/api/products/${id}`); // Шлях до вашого API
+            if (!res.ok) {
+                throw new Error('Failed to fetch product data');
+            }
+            const data = await res.json();
+            setProduct(data); // Збереження даних про продукт
+        } catch (error) {
+            console.error('Error fetching product:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchProduct(productId); // Викликаємо fetchProduct при зміні productId
+    }, [productId]);
 
     if (!product) {
         return <div>Продукт не знайдено</div>;
@@ -36,11 +53,15 @@ export const ProductGallery: React.FC<Props> = ({ product }) => {
 
     const images = Array.isArray(product.image) ? product.image : [product.image];
 
+    // Функція для побудови URL для кожного зображення
+    const getImageUrl = (image: string) => {
+        // Для S3 використовуємо таку URL-структуру:
+        return `https://furniture.s3.eu-north-1.amazonaws.com/images/${image}`; // Ваш AWS S3 URL
+    };
+
     const handleThumbnailClick = (index: number) => {
         setCurrentIndex(index);
-        if (carouselApi) {
-            carouselApi.scrollTo(index);
-        }
+        carouselApi?.scrollTo(index);
     };
 
     return (
@@ -61,11 +82,11 @@ export const ProductGallery: React.FC<Props> = ({ product }) => {
                     <div className="product-gallery-previous">
                         <CarouselPrevious />
                     </div>
-                    <CarouselContent className="product-gallery-conten">
+                    <CarouselContent className="product-gallery-content">
                         {images.map((img, index) => (
                             <CarouselItem key={index} className="main-item">
                                 <Image
-                                    src={img}
+                                    src={getImageUrl(img)} // Використовуємо правильний шлях
                                     alt={product.name}
                                     width={585}
                                     height={460}
@@ -89,7 +110,7 @@ export const ProductGallery: React.FC<Props> = ({ product }) => {
                         onClick={() => handleThumbnailClick(index)}
                     >
                         <Image
-                            src={img}
+                            src={getImageUrl(img)} // Використовуємо правильний шлях
                             alt={`${product.name} thumbnail ${index + 1}`}
                             width={132}
                             height={132}
