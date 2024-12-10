@@ -7,19 +7,19 @@ import { FaStar } from 'react-icons/fa';
 interface ProductProps {
     id: number;
     name: string;
-    category?: string;
-    description?: string;
     price: number;
+    description?: string;
     rating?: number;
     reviewCount?: number;
-    image: string[];
-    mainImage: string;
-    width: string[];
-    height: string[];
-    color: string[];
+    image: string[]; // Масив для зображень продукту
+    mainImage?: string; // Основне зображення
     specialOffer?: boolean;
     popular?: boolean;
     new?: boolean;
+    category: string;
+    width: string[];
+    height: string[];
+    color: string[];
     relatedProducts?: number[];
 }
 
@@ -28,13 +28,15 @@ interface CardProductsProps {
 }
 
 export const CardProducts: React.FC<CardProductsProps> = ({ product }) => {
+    const { name, price, description, rating, reviewCount, image, mainImage } = product;
+
     return (
         <div className="card cursor-pointer">
-            <Link href={`/shop/products/${product.id}`}>
+            <Link href={`/shop/products/${product.id}`} aria-label={`View details for ${name}`}>
                 <div className="card-item">
                     <Image
-                        src={product.mainImage ? product.mainImage : '/images/default-image.png'}
-                        alt={product.name}
+                        src={mainImage || image[0] || '/images/default-image.png'}
+                        alt={`${name} product image`}
                         width={280}
                         height={280}
                         className="card-item-image"
@@ -42,14 +44,16 @@ export const CardProducts: React.FC<CardProductsProps> = ({ product }) => {
                 </div>
                 <div className="card-item-info">
                     <div className="card-item-info-wrapp">
-                        <h1 className="card-item-info-wrapp-title">{product.name}</h1>
-                        <p className="card-item-info-wrapp-price">${product.price}</p>
+                        <h1 className="card-item-info-wrapp-title">{name}</h1>
+                        <p className="card-item-info-wrapp-price">${price}</p>
                     </div>
-                    <p className="card-item-info-description">{product.description || 'No description available'}</p>
+                    <p className="card-item-info-description">{description || 'No description available'}</p>
                     <div className="reviews">
                         <FaStar className="reviews-star" />
-                        <span className="reviews-star-rating">{product.rating?.toFixed(1)}</span>
-                        <span className="reviews-star-rating-count">({product.reviewCount})</span>
+                        <span className="reviews-star-rating">
+                            {rating ? rating.toFixed(1) : 'N/A'}
+                        </span>
+                        <span className="reviews-star-rating-count">({reviewCount ?? 0})</span>
                     </div>
                 </div>
             </Link>

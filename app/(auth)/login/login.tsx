@@ -1,9 +1,11 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import CustomInput from '@/components/shared/custom-ui/CustomInput';
+import CustomInput from '@/components/shared/custom-ui/custom-input';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema } from '@/lib/zodSchemas/authSchema';
+import { loginUser } from '@/lib/auth.api'; // Додаємо API для логіну
+import { AxiosError } from 'axios'; // Імпортуємо тип AxiosError
 
 interface Props {
   changeMode: () => void;
@@ -15,6 +17,8 @@ interface Inputs {
 }
 
 export const Login: FC<Props> = ({ changeMode }) => {
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const {
     register,
     handleSubmit,
@@ -23,8 +27,25 @@ export const Login: FC<Props> = ({ changeMode }) => {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      const response = await loginUser(data.email, data.password);
+      setSuccess('Login successful!');
+      console.log('Logged in successfully:', response);
+
+      localStorage.setItem('token', response.token);
+
+      window.location.href = '/page';
+    } catch (err: unknown) {
+      if (err instanceof AxiosError) {
+
+        console.error('Login error:', err.response?.data || err.message);
+        setError('Failed to log in. Please check your credentials.');
+      } else {
+        console.error('An unexpected error occurred:', err);
+        setError('An unexpected error occurred.');
+      }
+    }
   };
 
   return (
@@ -57,6 +78,8 @@ export const Login: FC<Props> = ({ changeMode }) => {
         >
           Sign In
         </button>
+        {error && <p className="text-red-500 mt-4">{error}</p>}
+        {success && <p className="text-green-500 mt-4">{success}</p>}
       </form>
       <p className="text-[14px] text-[#666]">
         Don&#39;t have an account yet? Please{' '}

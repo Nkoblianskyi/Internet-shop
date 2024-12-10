@@ -1,22 +1,12 @@
-// app/api/products/route.ts (Next.js)
-import { NextResponse } from 'next/server';
+import { NextApiRequest, NextApiResponse } from "next";
+import { getProducts } from "../../../service/productsService";
 
-export async function GET() {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
-        // Робимо запит до локального бекенду
-        const response = await fetch('/api/products');
-        if (!response.ok) {
-            throw new Error('Failed to fetch products from backend');
-        }
-
-        // Отримуємо продукти
-        const products = await response.json();
-
-        // Повертаємо продукти як JSON
-        return NextResponse.json(products);
-    } catch (error) {
-        // Логування помилки та повернення статусу 500
-        console.error('Error fetching products:', error);
-        return NextResponse.json({ error: 'Unable to fetch products' }, { status: 500 });
+        const products = await getProducts();
+        res.status(200).json(products);
+    } catch {
+        // Помилку можна обробити без використання змінної
+        res.status(500).json({ message: "Internal Server Error" });
     }
 }

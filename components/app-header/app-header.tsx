@@ -1,15 +1,26 @@
 "use client";
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import SearchWithSelect from '@/components/app-header/components/search-with-select';
 import { ShoppingCart } from 'lucide-react';
-import { mockedUser } from '@/mocks/user';
 import ProfileButton from '@/components/profil-button/profile-button';
 import { Auth } from '@/app/(auth)/auth';
 
 const AppHeader = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, []);
+
   return (
-    <header className="w-full bg-white shadow-md py-3 px-4  md:py-7 container">
+    <header className="w-full bg-white shadow-md py-3 px-4 md:py-7 container">
       <nav className="flex justify-between items-center gap-2 w-full">
         <Link href="/" className="hidden sm:block">
           Logo
@@ -28,7 +39,8 @@ const AppHeader = () => {
 
           <div className="w-[2px] h-7 bg-[#E4E9EE]" />
 
-          {mockedUser ? (
+          {/* Відображаємо кнопку профілю або форму авторизації залежно від стану */}
+          {isAuthenticated ? (
             <ProfileButton />
           ) : (
             <Auth />

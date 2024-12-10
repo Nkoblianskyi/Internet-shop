@@ -1,9 +1,13 @@
-import { FC } from 'react';
+'use client'
+
+import { FC, useState } from 'react';
 import { DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registrationSchema } from '@/lib/zodSchemas/authSchema';
-import CustomInput from '@/components/shared/custom-ui/CustomInput';
+import CustomInput from '@/components/shared/custom-ui/custom-input';
+import { registerUser } from '@/lib/auth.api';
+import axios from 'axios';
 
 interface Props {
   changeMode: () => void;
@@ -17,6 +21,8 @@ interface Inputs {
 }
 
 export const Registration: FC<Props> = ({ changeMode }) => {
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const {
     register,
     handleSubmit,
@@ -25,9 +31,29 @@ export const Registration: FC<Props> = ({ changeMode }) => {
     resolver: zodResolver(registrationSchema),
   });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-  };
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+
+        if (!data.name || !data.phone || !data.email || !data.password) {
+            setError('All fields are required!');
+            return;
+        }
+
+
+        await registerUser(data.email, data.password, 'user', data.phone, data.name);
+
+        setSuccess('Registration successful!');
+        changeMode();
+    } catch (err: unknown) {
+        if (axios.isAxiosError(err)) {
+
+            setError(`Error: ${err.response?.data?.message || 'Unknown error'}`);
+        } else {
+            setError('Failed to register. Try again later.');
+        }
+        console.error('Registration Error: ', err);
+    }
+};
 
   return (
     <>
@@ -73,6 +99,8 @@ export const Registration: FC<Props> = ({ changeMode }) => {
         >
           Sign Up
         </button>
+        {error && <p className="text-red-500 mt-4">{error}</p>}
+        {success && <p className="text-green-500 mt-4">{success}</p>}
       </form>
       <p className="text-[14px] text-[#666]">
         Already have an account? Please{' '}

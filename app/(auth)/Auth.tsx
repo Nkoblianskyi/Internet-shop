@@ -15,7 +15,7 @@ export const Auth = () => {
       </DialogTrigger>
       <DialogPortal>
         <DialogContent>
-          <AuthForms /> {/* Рендеримо AuthForms */}
+          <AuthForms />
         </DialogContent>
       </DialogPortal>
     </Dialog>

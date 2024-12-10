@@ -25,7 +25,6 @@ export const PopularItem: React.FC = () => {
                 setIsLoading(false);
             })
             .catch((error) => {
-                // General error handling without unnecessary console logs
                 console.error('Error loading products:', error);
                 setIsLoading(false);
             });

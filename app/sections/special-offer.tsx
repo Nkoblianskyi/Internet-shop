@@ -20,8 +20,8 @@ interface Product {
     rating: number;
     reviewCount: number;
     category: string;
-    image: string[]; // Images from AWS
-    mainImage: string; // Main image from AWS
+    image: string[];
+    mainImage: string;
     width: string[];
     height: string[];
     color: string[];
@@ -39,7 +39,7 @@ export const SpecialOffer: React.FC<Props> = () => {
     const [carouselApi, setCarouselApi] = useState<EmblaCarouselType | undefined>(undefined);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/products') // Make sure the API server is working
+        fetch('http://localhost:5000/api/products')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to load data');
@@ -53,7 +53,6 @@ export const SpecialOffer: React.FC<Props> = () => {
                 }
             })
             .catch(error => {
-                // General error handling without unnecessary console logs
                 console.error('Error loading products:', error);
             });
     }, []);
@@ -88,7 +87,7 @@ export const SpecialOffer: React.FC<Props> = () => {
                                             reviewCount: product.reviewCount,
                                             category: product.category,
                                             image: product.image,
-                                            mainImage: product.mainImage, // Make sure this URL is correct
+                                            mainImage: product.mainImage,
                                             width: product.width,
                                             height: product.height,
                                             color: product.color,

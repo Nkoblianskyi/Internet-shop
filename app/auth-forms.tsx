@@ -10,7 +10,6 @@ enum Mode {
 export const AuthForms = () => {
   const [mode, setMode] = useState<Mode>(Mode.SIGN_IN);
 
-  // Функція для зміни режиму
   const changeMode = () => {
     setMode((prevMode) =>
       prevMode === Mode.SIGN_IN ? Mode.SIGN_UP : Mode.SIGN_IN

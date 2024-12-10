@@ -1,8 +1,8 @@
-    /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation'; // Використовуємо useParams для доступу до параметрів маршруту
+import { useParams } from 'next/navigation';
+import axios from 'axios'; // Add axios for API calls
 import { ProductGallery } from '@/components/shared/product-gallery';
 import { ProductInfo } from '@/components/shared/product-info';
 import { RelatedProduct } from '@/components/shared/related-product';
@@ -14,57 +14,59 @@ interface ProductType {
     description: string;
     rating: number;
     reviewCount: number;
-    image: string[]; 
     mainImage: string;
-    width?: string[];
-    height?: string[];
-    depth?: string[];
-    color?: string[];
+    Image: { id: number; url: string }[]; // Array of images
+    Dimension: { depth: string; height: string; width: string; value: string }[]; // Dimensions
+    Color: { name: string }[]; // Array of colors
+    relatedProducts: number[]; // Array of related product IDs
 }
 
-const ProductPage = () => {
+const ProductPage: React.FC = () => {
     const [product, setProduct] = useState<ProductType | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    // Використовуємо useParams для доступу до params.id
     const params = useParams();
-    
+
     useEffect(() => {
         const fetchProductData = async () => {
             try {
-                // Перевіряємо, чи є params.id і чи це не масив
-                const productId = Array.isArray(params.id) ? parseInt(params.id[0], 10) : parseInt(params.id || '', 10);
+                setLoading(true);
+                setError(null);
 
+                const productId = Array.isArray(params.id) ? parseInt(params.id[0], 10) : parseInt(params.id || '', 10);
                 if (isNaN(productId)) {
-                    setError('Invalid product ID');
-                    setLoading(false);
-                    return;
+                    throw new Error('Invalid product ID');
                 }
 
-                setLoading(true);
-                const res = await fetch(`http://localhost:5000/api/products/${productId}`);
-                if (!res.ok) {
+                const res = await axios.get(`http://localhost:5000/api/products/${productId}`);
+
+                if (res.status === 200) {
+                    const productData: ProductType = res.data;
+                    setProduct(productData);
+                } else {
                     throw new Error('Failed to fetch product data');
                 }
-                const productData = await res.json();
-                setProduct(productData);
-            } catch (error) {
-                setError('Product not found or failed to load');
+            } catch (err: unknown) {
+                if (err instanceof Error) {
+                    setError(err.message);
+                } else {
+                    setError('An unknown error occurred');
+                }
             } finally {
                 setLoading(false);
             }
         };
 
         fetchProductData();
-    }, [params]); // Залежність від params
+    }, [params]);
 
     if (loading) {
         return <p>Loading...</p>;
     }
 
     if (error) {
-        return <p>{error}</p>;
+        return <p>Error: {error}</p>;
     }
 
     if (!product) {
@@ -72,26 +74,32 @@ const ProductPage = () => {
     }
 
     return (
-        <div className="product-page">
+        <div className="product container">
             <h1>{product.name}</h1>
             <div className="product-info">
-                <ProductGallery productId={product.id} /> {/* Оновлено для правильного використання productId */}
+                <ProductGallery productId={product.id} images={product.Image} />
                 <ProductInfo
                     name={product.name}
                     price={product.price}
                     description={product.description}
                     rating={product.rating}
                     reviewCount={product.reviewCount}
-                    width={product.width}
-                    height={product.height}
-                    color={product.color}
+                    width={product.Dimension.map((dim) => dim.width)}
+                    height={product.Dimension.map((dim) => dim.height)}
+                    depth={product.Dimension.map((dim) => dim.depth)}
+                    color={product.Color.map((col) => col.name)}
                 />
             </div>
-            <div>
-                <RelatedProduct id={product.id} /> {/* Список схожих продуктів */}
+
+            <div className="related-products">
+                <h3 className="related-products-title">Recommended Products</h3>
+                <div className="related-products-list">
+                    <RelatedProduct count={4} />
+                </div>
             </div>
         </div>
     );
 };
+
 
 export default ProductPage;

@@ -1,32 +1,28 @@
-.related-product
+.related-products
     display: flex
     flex-direction: column
     width: 100%
     gap: 37px
     margin-top: 45px
+    position: relative
 
-    &:before
+    &::before
+        position: absolute
         content: ''
-        display: block
         width: 100%
         height: 1px
         background-color: #E4E9EE
-        margin-bottom: 37px
+        top: -32px
 
     &-title
-        display: flex
-        flex-direction: row
-        align-items: center
-        justify-content: space-between
-        width: 100%
+        font-family: Clash Grotesk
+        font-size: 20px
+        font-weight: 600
+        line-height: 28px
+        text-align: left
 
-        &-text
-            font-size: 20px
-            font-weight: 600
-            line-height: 28px
-    
-    &-card
+    &-list
         display: flex
         flex-direction: row
+        justify-content: start
         gap: 24px
-

@@ -1,12 +1,12 @@
 "use client";
 
 import { FormEvent, useState } from 'react';
-import mockedCategories from '@/mocks/categories'; // імпортуємо масив категорій
+import mockedCategories from '@/mocks/categories';
 import { Input } from '@/components/ui/input';
 import { SearchIcon } from 'lucide-react';
 
 const SearchWithSelect = () => {
-  // Ініціалізуємо як порожній рядок замість null
+
   const [selectedItem, setSelectedItem] = useState<string>('');
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -23,8 +23,8 @@ const SearchWithSelect = () => {
       {/* Випадаючий список */}
       <div className="relative w-full sm:w-auto">
         <select
-          value={selectedItem} // Тепер тип string, сумісний із value
-          onChange={(e) => setSelectedItem(e.target.value)} // Оновлення стану
+          value={selectedItem}
+          onChange={(e) => setSelectedItem(e.target.value)}
           className="w-full sm:w-auto rounded-md border-none bg-[#F6F8FA] pl-4 pr-8 py-2 appearance-none"
         >
           <option value="" disabled>
