@@ -37,7 +37,7 @@ export const Login: FC<Props> = ({ changeMode }) => {
 
       localStorage.setItem('token', response.token);
 
-      window.location.href = '/page';
+      window.location.href = 'http://localhost:3000/';
     } catch (err: unknown) {
       if (err instanceof AxiosError) {
         console.error('Login error:', err.response?.data || err.message);
