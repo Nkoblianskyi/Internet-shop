@@ -1,0 +1,90 @@
+.main-image
+    object-fit: cover
+    border-radius: 30px
+.product-gallery
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    width: 100%
+    max-width: 585px
+    height: 610px
+    box-sizing: border-box
+    position: relative
+
+    &-main-image-container
+        position: relative
+        width: 100%
+        height: 460px
+        overflow: hidden
+
+    &-carousel
+        display: flex
+        align-items: center
+        justify-content: center
+        position: relative
+        width: 100%
+        height: 100%
+
+    &-previous
+        position: absolute
+        left: 2.5rem // 2
+        top: 50%
+        transform: translateY(-50%)
+        z-index: 10
+
+    &-next
+        position: absolute
+        right: 2.5rem // 2
+        top: 50%
+        transform: translateY(-50%)
+        z-index: 10
+
+    &-thumbnail-container
+        display: flex
+        justify-content: space-between
+        margin-top: 0.5rem // 2
+        width: 100%
+        gap: 16px
+
+    &-thumbnail-wrapper
+        cursor: pointer
+        width: 132px
+        height: 132px
+
+    &-thumbnail
+        object-fit: cover
+        transition: transform 0.3s
+        border-radius: 8px
+
+    &-thumbnail-active
+        border: 1px solid #1E4C2F
+
+@media screen and (max-width: 1024px)
+    .product-gallery
+        width: 100%
+        margin: 20px auto
+
+@media screen and (max-width: 768px)
+    .product-gallery
+        width: 100%
+        max-width: 768px
+
+    .product-gallery-thumbnail-container
+        width: calc(100% / 3 - 15px)
+
+@media screen and (max-width: 480px)
+    .product-gallery
+        width: 100%
+
+    .product-gallery-thumbnail-container
+        width: 100%
+
+    .product-gallery-thumbnail
+        width: 32px
+        height: 32px
+
+    .product-gallery-thumbnail-text
+        font-size: 14px
+        font-weight: 600
+        line-height: 19.6px
+        text-align: center

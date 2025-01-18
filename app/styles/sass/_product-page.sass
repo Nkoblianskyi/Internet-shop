@@ -1,0 +1,90 @@
+.product
+    display: flex
+    flex-direction: column
+    width: 100%
+    gap: 30px
+    margin-top: 60px
+    margin-bottom: 120px
+
+    &-info
+        display: flex
+        flex-direction: row
+        gap: 42px
+        width: 100%
+
+        &-card
+            display: flex
+            flex-direction: column
+            align-items: start
+            width: 100%
+
+            &-title
+                font-size: 38px
+                font-weight: 600
+                line-height: 53.2px
+                margin-bottom: 8px
+
+            &-reviews
+                display: flex
+                align-items: center
+                gap: 10px
+                margin-bottom: 16px
+
+            &-price
+                font-size: 28px
+                font-weight: 600
+                line-height: 39.2px
+                color: #1D9E34
+                margin-bottom: 24px
+
+            &-description
+                font-size: 16px
+                font-weight: 400
+                line-height: 25.6px
+                color: #818B9C
+                margin-bottom: 24px
+                position: relative
+                width: 100%
+
+                &:after 
+                    content: ""
+                    display: block
+                    width: 85%
+                    height: 1px
+                    background-color: #E4E9EE
+                    position: absolute
+                    bottom: -24px
+
+            &-variant
+                display: flex
+                flex-direction: column
+                gap: 24px
+                margin-top: 24px
+
+                &-title
+                    font-size: 18px
+                    font-weight: 600
+                    line-height: 25.2px
+                
+                &-select
+                    display: flex
+                    align-items: start
+                    flex-direction: column
+                    gap: 16px
+                    margin-bottom: 26px
+                
+
+            &-button
+                display: flex
+                align-items: center
+                justify-content: center
+                width: 100%
+                max-width: 520px
+                padding: 18px
+                gap: 16px
+                margin-top: 26px
+
+                &-buy
+                    width: 100%
+                &-chart
+                    width: 100%

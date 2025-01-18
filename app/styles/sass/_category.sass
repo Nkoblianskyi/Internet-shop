@@ -1,0 +1,101 @@
+.category
+    display: flex
+    flex-direction: column
+    gap: 25px
+    box-sizing: border-box
+    max-width: 100%
+    margin: 80px
+    padding: 0 1rem
+
+    &-title
+        display: flex
+        align-items: center
+        justify-content: space-around
+        &-text
+            font-size: 38px
+            font-weight: 600
+            line-height: 53.2px
+
+    &-container
+        display: flex
+        align-items: center
+        justify-content: space-around
+        width: 100%
+        flex-wrap: wrap
+
+        &-item
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            gap: 10px
+            padding: 10px
+            border-radius: 10px
+            height: 140px
+            width: 120px
+            transition: background-color 0.3s, transform 0.5s
+
+            &:hover
+                background-color: #1E4C2F
+                color: #FFFFFF
+                transform: scale(1.01)
+
+                .category-container-item-icon
+                    color: #FFFFFF
+
+            &-icon
+                width: 52px
+                height: 52px
+                color: #1E4C2F
+                transition: background-color 0.3s
+
+            &-text
+                font-size: 20px
+                font-weight: 600
+                line-height: 28px
+                letter-spacing: -0.20000000298023224px
+                text-align: center
+                transition: color 0.3s
+
+@media screen and (max-width: 1024px)
+    .category
+        width: 100%
+        margin: 20px auto
+@media screen and (max-width: 768px)
+    .category
+        width: 100%
+        max-width: 768px
+
+        &-container-item
+            width: calc(100% / 3 - 15px)
+        &-title-text
+            font-size: 28px
+            font-weight: 600
+            line-height: 39.2px
+
+@media screen and (max-width: 480px)
+    .category
+        width: 100%
+        &-title-text
+            font-size: 18px
+            font-weight: 600
+            line-height: 25.2px
+        &-container-item
+            width: 120px
+            height: 126px
+            &-icon
+                width: 32px
+                height: 32px
+            &-text
+                font-size: 14px
+                font-weight: 600
+                line-height: 19.6px
+                text-align: center
+
+    .category-left-button-item
+        width: 94px
+        font-size: 14px
+        font-weight: 600
+        line-height: 19.6px
+        padding: 6px 12px 6px 12px
+
