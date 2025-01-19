@@ -45,7 +45,7 @@ export interface LoginResponse {
 export interface User {
     id: string;
     email: string;
-    role: string;
+    role: 'user' | 'admin';
     name: string;
     phone: string;
 }
