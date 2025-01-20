@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "store/slices/cart-slice.tss"  ],
+, "store/slices/cart-slice.tsx"  ],
   "exclude": [
     "node_modules"
   ]

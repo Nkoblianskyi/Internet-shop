@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { fetchUser } from '@/lib/auth.api';
 import { User } from '@/app/types/types';
+import { fetchUser } from '@/app/api/user/fetch-user';
 
 export const useUser = () => {
     const [user, setUser] = useState<User | null>(null);

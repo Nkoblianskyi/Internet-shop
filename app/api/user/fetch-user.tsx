@@ -7,6 +7,8 @@ export const fetchUser = async () => {
         throw new Error('Token not found');
     }
 
+    console.log("Sending token:", token);
+
     try {
         const response = await axios.get('http://localhost:5000/user/profile', {
             headers: {
@@ -16,7 +18,6 @@ export const fetchUser = async () => {
 
         return response.data;
     } catch (error) {
-
         if (axios.isAxiosError(error)) {
             throw new Error(error.response?.data?.message || 'Error fetching user data');
         }

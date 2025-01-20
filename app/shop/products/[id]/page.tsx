@@ -33,7 +33,6 @@ const ProductPage: React.FC = () => {
                 if (res.status === 200) {
                     const productData = res.data;
 
-                    // Нормалізуємо ключі відповідно до інтерфейсу Product
                     const normalizedProduct: Product = {
                         ...productData,
                         image: productData.Image,

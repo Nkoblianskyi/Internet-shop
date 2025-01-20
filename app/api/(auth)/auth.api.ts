@@ -1,31 +1,16 @@
-import axios from 'axios';
-
-axios.interceptors.request.use((config) => {
-
-    const token = localStorage.getItem('authToken');
-
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-    }
-
-    return config;
-}, (error) => {
-    return Promise.reject(error);
-});
+import { api } from "@/lib/auth.api";
 
 
-export const loginUser = async (email: string, password: string) => {
+export const getMe = async (token: string) => {
     try {
-        const response = await axios.post('/auth/login', { email, password });
-
-        const token = response.data.token;
-        if (token) {
-            localStorage.setItem('authToken', token);
-        }
-
+        const response = await api.get('/auth/me', {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
         return response.data;
     } catch (error) {
-        console.error('Login error', error);
-        throw new Error('Login failed');
+        console.error('Failed to get user data', error);
+        throw error;
     }
 };

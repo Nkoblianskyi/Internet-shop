@@ -19,7 +19,7 @@ const ProfileButton = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    window.location.href = '/page';
+    window.location.href = '/user';
   };
 
   if (!isClient) {

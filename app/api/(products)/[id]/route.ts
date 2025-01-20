@@ -4,7 +4,6 @@ const prisma = new PrismaClient();
 
 export async function GET(req: Request, { params }: { params: { id: string } }) {
     try {
-        // Отримуємо продукт по ID
         const product = await prisma.product.findUnique({
             where: {
                 id: parseInt(params.id),

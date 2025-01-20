@@ -4,10 +4,16 @@ import { FC, useState } from 'react';
 import { DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import CustomInput from '@/components/shared/custom-ui/custom-input';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema } from '@/lib/zodSchemas/authSchema';
 import { loginUser } from '@/lib/auth.api';
-import { AxiosError } from 'axios';
+import { useRouter } from 'next/navigation';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+
+const loginSchema = z.object({
+  email: z.string().email({ message: 'Invalid email address' }),
+  password: z.string().min(6, { message: 'Password must be at least 6 characters' }),
+});
 
 interface Props {
   changeMode: () => void;
@@ -19,8 +25,10 @@ interface Inputs {
 }
 
 export const Login: FC<Props> = ({ changeMode }) => {
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -30,22 +38,19 @@ export const Login: FC<Props> = ({ changeMode }) => {
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    setLoading(true);
     try {
-      const response = await loginUser(data.email, data.password);
-      setSuccess('Login successful!');
-      console.log('Logged in successfully:', response);
-
-      localStorage.setItem('token', response.token);
-
-      window.location.href = 'http://localhost:3000/';
+      const token = await loginUser(data.email, data.password);
+      localStorage.setItem('token', token);
+      changeMode();
+      router.push('/');
     } catch (err: unknown) {
-      if (err instanceof AxiosError) {
-        console.error('Login error:', err.response?.data || err.message);
-        setError('Failed to log in. Please check your credentials.');
+      if (err instanceof Error) {
+        setError(err.message);
       } else {
-        console.error('An unexpected error occurred:', err);
-        setError('An unexpected error occurred.');
+        setError('An unexpected error occurred');
       }
+      setLoading(false);
     }
   };
 
@@ -55,32 +60,30 @@ export const Login: FC<Props> = ({ changeMode }) => {
         <DialogTitle className="text-2xl">Sign In</DialogTitle>
       </DialogHeader>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10">
-        <div className="flex flex-col gap-2">
-          <CustomInput
-            type="email"
-            label="Email"
-            placeholder="johndoe@gmail.com"
-            error={errors.email?.message}
-            register={register}
-            registerId="email"
-          />
-          <CustomInput
-            type="password"
-            label="Password"
-            placeholder="Password"
-            error={errors.password?.message}
-            register={register}
-            registerId="password"
-          />
-        </div>
+        <CustomInput
+          type="email"
+          label="Email"
+          placeholder="johndoe@gmail.com"
+          error={errors.email?.message}
+          register={register}
+          registerId="email"
+        />
+        <CustomInput
+          type="password"
+          label="Password"
+          placeholder="Password"
+          error={errors.password?.message}
+          register={register}
+          registerId="password"
+        />
         <button
           type="submit"
           className="rounded w-full h-12 bg-[#7B5E57] duration-200 hover:bg-[#8C6F68] text-white"
+          disabled={loading}
         >
-          Sign In
+          {loading ? 'Logging In...' : 'Sign In'}
         </button>
         {error && <p className="text-red-500 mt-4">{error}</p>}
-        {success && <p className="text-green-500 mt-4">{success}</p>}
       </form>
       <p className="text-[14px] text-[#666]">
         Don&#39;t have an account yet? Please{' '}

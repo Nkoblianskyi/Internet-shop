@@ -1,3 +1,5 @@
+'use client'
+
 import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
@@ -6,7 +8,7 @@ const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:5000';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { id } = req.query;
 
-    const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
 
     if (!token) {
         return res.status(401).json({ error: 'No token provided' });

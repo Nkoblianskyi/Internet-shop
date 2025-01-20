@@ -23,8 +23,8 @@ interface CartProduct extends Product {
 }
 
 export const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
-    const dispatch: AppDispatch = useDispatch(); // Використовуємо тип AppDispatch для dispatch
-    const userId = useSelector((state: RootState) => state.auth.user?.id); // Отримуємо userId з Redux
+    const dispatch: AppDispatch = useDispatch();
+    const userId = useSelector((state: RootState) => state.auth.user?.id);
 
     const [selectedWidth, setSelectedWidth] = useState<string>('');
     const [selectedHeight, setSelectedHeight] = useState<string>('');
@@ -34,8 +34,8 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
     const handleAddToCart = () => {
         if (userId) {
             const productToAdd: CartProduct = {
-                ...product, // всі властивості продукту
-                quantity: 1, // додаємо кількість
+                ...product,
+                quantity: 1,
                 selectedWidth,
                 selectedHeight,
                 selectedDepth,

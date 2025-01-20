@@ -14,7 +14,7 @@ export const CardProducts: React.FC<CardProductsProps> = ({ product }) => {
 
     return (
         <div className="card cursor-pointer">
-            <Link href={`/shop/products/${product.id}`} passHref aria-label={`View details for ${name}`}>
+            <Link href={`/shop/products/${product.id}`} aria-label={`View details for ${name}`}>
                 <div className="card-item">
                     <Image
                         src={mainImage || (image[0]?.url) || '/images/default-image.png'}

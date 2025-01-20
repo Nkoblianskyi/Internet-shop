@@ -1,7 +1,9 @@
 import axiosInstance from './axiosInstance';
 
 export const addToCart = async (userId: string, productId: string, quantity: number) => {
-    if (!userId) {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
         throw new Error('User is not authenticated');
     }
 

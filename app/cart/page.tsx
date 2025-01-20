@@ -41,12 +41,9 @@ const Cart = () => {
           <Button onClick={handleClearCart}>Clear Cart</Button>
         </div>
       </div>
-      <div className="related-products">
-        <h3 className="related-products-title">Recommended Products</h3>
         <div className="related-products-list">
           <RelatedProduct count={5} />
         </div>
-      </div>
     </>
   );
 };
